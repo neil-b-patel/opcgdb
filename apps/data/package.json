@@ -1,0 +1,19 @@
+{
+  "name": "@optcgdb/data",
+  "version": "1.0.0",
+  "description": "Client application to explore the One Piece TCG Database",
+  "license": "ISC",
+  "author": "Marcos Mellado <marcos@mellado.dev>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

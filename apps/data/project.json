@@ -1,0 +1,22 @@
+{
+  "name": "@optcgdb/data",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/data",
+  "projectType": "library",
+  "targets": {
+    "watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/data",
+        "commands": ["rm -rf dist", "tsc -w"]
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/data",
+        "commands": ["rm -rf dist", "tsc"]
+      }
+    }
+  }
+}

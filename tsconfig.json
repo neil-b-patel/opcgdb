@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "allowJs": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": false,
+    "lib": ["ESNext"]
+  },
+  "exclude": ["node_modules", ".vscode/*"]
+}

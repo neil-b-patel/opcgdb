@@ -1,0 +1,22 @@
+{
+  "name": "@optcgdb/client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/client",
+  "projectType": "application",
+  "targets": {
+    "images:en": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/client",
+        "commands": ["vite-node ./scripts/download-images.ts --lang en"]
+      }
+    },
+    "images:jp": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/client",
+        "commands": ["vite-node ./scripts/download-images.ts --lang jp"]
+      }
+    }
+  }
+}
