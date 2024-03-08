@@ -2,9 +2,8 @@
   "name": "@optcgdb/client",
   "version": "1.0.0",
   "description": "",
-  "keywords": [],
   "license": "ISC",
-  "author": "",
+  "author": "Marcos Mellado <marcos@mellado.dev>",
   "type": "module",
   "dependencies": {
     "@optcgdb/data": "workspace:^"
