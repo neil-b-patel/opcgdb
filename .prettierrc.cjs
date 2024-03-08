@@ -1,32 +1,27 @@
-module.expoerts = {
-  bracketSpacing: true,
-  endOfLine: "auto",
-  jsxSingleQuote: false,
+module.exports = {
   printWidth: 100,
-  semi: true,
-  singleQuote: false,
   tabWidth: 2,
-  trailingComma: "es5",
-  useTabs: false,
+  trailingComma: 'es5',
+  singleQuote: true,
+  semi: true,
+  vueIndentScriptAndStyle: true,
+
   // Import order plugin
-  plugins: [
-    "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-packagejson",
-  ],
+  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-packagejson'],
   importOrderCaseInsensitive: true,
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   importOrder: [
     // Node modules
-    "<THIRD_PARTY_MODULES>",
+    '<THIRD_PARTY_MODULES>',
 
     // Resn libraries
-    "^@optcgdb/(.*)$",
+    '^@optcgdb/(.*)$',
 
     // Local imports
-    "^.[.]{0,1}/(?!.*.(scss|css|sass)$).*$",
+    '^.[.]{0,1}/(?!.*.(scss|css|sass)$).*$',
 
     // Stlyes
-    ".(scss|sass|css)$",
+    '.(scss|sass|css)$',
   ],
 };

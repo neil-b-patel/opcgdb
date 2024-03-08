@@ -1,4 +1,4 @@
-export type OPTCGLanguage = "en" | "jp";
+export type OPTCGLanguage = 'en' | 'jp';
 
 export type OPTCGSet = {
   id: string;
@@ -29,7 +29,4 @@ export type OPTCGCardList = OPTCGCard[];
 
 export type OPTCGCardMap = Record<OPTCGLanguage, OPTCGCardList>;
 
-export type OPTCGSeriesCorrections = Record<
-  OPTCGLanguage,
-  { from: string; to: string }[]
->;
+export type OPTCGSeriesCorrections = Record<OPTCGLanguage, { from: string; to: string }[]>;

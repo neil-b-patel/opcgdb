@@ -2,13 +2,16 @@
   "name": "optcgdb",
   "version": "1.0.0",
   "description": "Monorepo hosting series of packages for the One Piece TCG DB",
-  "type": "module",
   "keywords": [],
-  "author": "",
   "license": "ISC",
+  "author": "",
+  "type": "module",
   "scripts": {
-    "watch:all": "nx run-many -t watch --parallel",
-    "build:data": "nx run @optcgdb/data:build"
+    "build:data": "nx run @optcgdb/data:build",
+    "format": "prettier apps/**/*.{ts,js,json} --write",
+    "lint": "eslint apps/**/*.{ts,js,json}",
+    "lint:fix": "eslint apps/**/*.{ts,js,json} --fix",
+    "watch:all": "nx run-many -t watch --parallel"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",

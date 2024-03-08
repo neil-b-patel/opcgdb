@@ -2,10 +2,10 @@
   "name": "@optcgdb/client",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "keywords": [],
-  "author": "",
   "license": "ISC",
+  "author": "",
+  "type": "module",
   "dependencies": {
     "@optcgdb/data": "workspace:^"
   }
