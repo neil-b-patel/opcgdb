@@ -1,6 +1,7 @@
 {
   "search.exclude": {
-    "**/.sst": true
+    "**/.sst": true,
+    "**/dist": true
   },
   "editor.rulers": [100],
   "editor.formatOnSave": true,

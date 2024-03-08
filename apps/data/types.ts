@@ -12,11 +12,12 @@ export type OPTCGCard = {
   set: string;
   rarity: string;
   color: string;
-  type: string;
+  type: string[];
   category: string;
-  cost: string;
   name: string;
   // Optional data
+  cost?: string;
+  life?: string;
   attribute?: string;
   effect?: string;
   power?: string;
@@ -27,3 +28,8 @@ export type OPTCGCard = {
 export type OPTCGCardList = OPTCGCard[];
 
 export type OPTCGCardMap = Record<OPTCGLanguage, OPTCGCardList>;
+
+export type OPTCGSeriesCorrections = Record<
+  OPTCGLanguage,
+  { from: string; to: string }[]
+>;

@@ -8,6 +8,20 @@
 // @grant none
 // ==/UserScript==
 
+/* ***************************************************************
+ * ***************************************************************
+ * **************** IMPORTANT NOTE BEFORE USE ********************
+ * ***************************************************************
+ * ***************************************************************
+ *
+ * This user script is out of date. This means the scraper has been
+ * updated to include additional tweaks to the data before saving it
+ * including but not limitted to updated data format for types,
+ * typo corrections, set information, etc. Before use, please make
+ * sure to update it. Otherwise, the information outputted by this
+ * user script will be incompatible with the DB's expected format
+ */
+
 function getSetNameAndID(input) {
   const parts = input.split("[");
   const id = parts[1]
@@ -19,7 +33,8 @@ function getSetNameAndID(input) {
 function crawlPage() {
   const cardNodes = document.querySelectorAll(".resultCol > a");
   const cardData = [...cardNodes].map((card) => {
-    // Data target
+    // Card ID & Data target
+    const id = card.getAttribute("data-src");
     const cardDetails = document.querySelector(id);
     const cardHead = cardDetails
       .querySelector(".infoCol")
@@ -27,8 +42,6 @@ function crawlPage() {
       .split("|");
 
     // Required Values
-    const id = card.getAttribute("data-src");
-
     const number = cardHead[0].trim();
 
     const _set = cardDetails
