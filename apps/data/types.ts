@@ -12,8 +12,8 @@ export type OPTCGCard = {
   set: string;
   rarity: string;
   color: string;
-  type: string[];
   category: string;
+  type: string[];
   name: string;
   // Optional data
   cost?: string;
