@@ -1,6 +1,7 @@
 {
   "name": "@optcgdb/data",
   "version": "1.0.0",
+  "private": true,
   "description": "Client application to explore the One Piece TCG Database",
   "license": "ISC",
   "author": "Marcos Mellado <marcos@mellado.dev>",

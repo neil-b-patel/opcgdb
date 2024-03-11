@@ -1,6 +1,7 @@
 {
   "name": "optcgdb",
   "version": "1.0.0",
+  "private": true,
   "description": "Monorepo hosting series of packages for the One Piece TCG DB",
   "license": "ISC",
   "author": "Marcos Mellado <marcos@mellado.dev>",
