@@ -4,4 +4,4 @@ dist
 *.log
 tmp
 .nx/cache
-
+.eslintcache
