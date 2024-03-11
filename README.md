@@ -24,11 +24,11 @@ Here is a list of the different applications hosted in this repo. Deeper READMEs
 
 The source of card data. Includes the scraper and exposes the cards and set data in JSON format.
 
-## @optcgdb/api
+### @optcgdb/api
 
 The API project. It consumes the information from `@optcgdb/data` and exposes it using different endpoints.
 
-## @optcgdb/client
+### @optcgdb/client
 
 This is a basic UI application to explore the database. It uses the `@optcgdb/api` as its data source.
 
