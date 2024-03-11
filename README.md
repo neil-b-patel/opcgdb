@@ -31,3 +31,5 @@ The API project. It consumes the information from `@optcgdb/data` and exposes it
 ## @optcgdb/client
 
 This is a basic UI application to explore the database. It uses the `@optcgdb/api` as its data source.
+
+> DISCLAIMER: This is a fan made project. All information and assets provided by the applications housed by this repository are owned by: BANDAI, BANDAI CARD GAMES, BANDAI NAMCO, Eiichiro Oda/Shueisha, Toei Animation
