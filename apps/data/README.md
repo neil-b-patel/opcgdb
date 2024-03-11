@@ -38,4 +38,4 @@ This will build the library for production use.
 
 ## Updating the data
 
-When new sets of cards are released, the scraper needs to be re-run to pull the latest information. This will only be possible
+When new sets of cards are released, the scraper needs to be re-run to pull the latest information. This will only be possible once the content is updated on the official website.
