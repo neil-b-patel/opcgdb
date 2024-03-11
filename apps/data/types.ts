@@ -5,13 +5,16 @@ export type OPTCGSet = {
   name: string;
 };
 
+export type CardRarity = 'C' | 'UC' | 'R' | 'SR' | 'L';
+export type CardColor = 'red' | 'blue' | 'yellow' | 'green' | 'black' | 'white';
+
 export type OPTCGCard = {
   // Required data
   id: string;
   number: string;
   set: string;
   rarity: string;
-  color: string;
+  color: string[];
   category: string;
   type: string[];
   name: string;

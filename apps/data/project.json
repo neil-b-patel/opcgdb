@@ -4,6 +4,13 @@
   "sourceRoot": "apps/data",
   "projectType": "library",
   "targets": {
+    "scrape": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/data",
+        "commands": ["vite-node ./utils/scraper.ts"]
+      }
+    },
     "watch": {
       "executor": "nx:run-commands",
       "options": {

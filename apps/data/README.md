@@ -2,6 +2,14 @@
 
 Main data source for the `@optcgdb/api`.
 
+## TODO
+
+[] Use Zod for types + Schemas
+[] Simplify type names
+[] Make scraper a CLI receiving parameters
+[] Add NX command for "per language" scraping
+[] Make scraper triggerable from workspace package.json
+
 ## Getting started
 
 > **NOTE**: All commands in this section should be run at the monorepo's root directory
