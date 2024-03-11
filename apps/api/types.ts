@@ -1,4 +1,7 @@
+import type { Request, Response } from 'express';
 import { z } from 'zod';
+
+const OPTCGLanguageSchema = z.enum(['en', 'jp']).optional();
 
 export const QueryFilterSchema = z.object({
   number: z.string().optional(),
@@ -23,3 +26,47 @@ export type ApiResponse = {
   data?: any;
   error?: string;
 };
+
+export const SetByIdParamsSchema = z
+  .object({
+    id: z.string(),
+  })
+  .partial();
+
+export const CardByIdParamsSchema = z
+  .object({
+    id: z.string(),
+  })
+  .partial();
+
+export const CardsByIdQuerySchema = z
+  .object({
+    lang: OPTCGLanguageSchema,
+  })
+  .partial();
+
+export const CardsByNumberParamsSchema = z
+  .object({
+    lang: OPTCGLanguageSchema,
+  })
+  .partial();
+
+export const CardsByNumberQuerySchema = z
+  .object({
+    number: z.string(),
+  })
+  .partial();
+
+export const SearchCardQuerySchema = z
+  .object({
+    ...QueryFilterSchema.shape,
+    trigger: z.enum(['0', '1']),
+    counter: z.enum(['0', '1']),
+    lang: OPTCGLanguageSchema,
+  })
+  .partial();
+
+export type RouteMap = {
+  path: string;
+  handler: (req: Request, res: Response) => void;
+}[];

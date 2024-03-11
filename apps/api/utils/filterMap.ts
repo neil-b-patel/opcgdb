@@ -13,7 +13,7 @@ const filterMap = {
     return cards.filter(({ rarity }) => rarity === t);
   },
   color: (cards: OPTCGCardList, t: QueryFilter['color']): OPTCGCardList => {
-    return cards.filter(({ color }) => color === t);
+    return cards.filter(({ color }) => color.includes(t));
   },
   category: (cards: OPTCGCardList, t: QueryFilter['category']): OPTCGCardList => {
     return cards.filter(({ category }) => category === t);
