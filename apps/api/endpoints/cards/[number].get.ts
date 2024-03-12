@@ -12,7 +12,7 @@ const getCardsByNumber = (req: Request, res: Response) => {
     }
     const qres = query(number, lang);
     res.status(qres.status).json({ ...qres });
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
 };
