@@ -3,27 +3,31 @@ module.exports = {
     node: true,
     es6: true,
   },
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 'latest',
   },
   settings: {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"],
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
-    "import/resolver": {
+    'import/resolver': {
       node: true,
+      typescript: {
+        project: './',
+      },
     },
   },
-  plugins: ["import", "@typescript-eslint"],
+  plugins: ['import', '@typescript-eslint'],
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended",
-    "plugin:import/typescript",
-    "prettier",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'prettier',
   ],
   rules: {
-    "@typescript-eslint/no-explicit-any": "warn",
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/triple-slash-reference': 'warn',
   },
 };

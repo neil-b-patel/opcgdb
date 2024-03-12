@@ -1,7 +1,25 @@
-.DS_Store
+# dependencies
 node_modules
-dist
-*.log
-tmp
+
+# cache
 .nx/cache
 .eslintcache
+
+# sst
+.sst
+.build
+
+# opennext
+.open-next
+
+# misc
+.DS_Store
+
+# logs
+*.log
+
+# local env files
+.env*.local
+
+# build files
+dist

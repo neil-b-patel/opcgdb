@@ -6,13 +6,20 @@
   "license": "ISC",
   "author": "Marcos Mellado <marcos@mellado.dev>",
   "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "build:data": "nx run @optcgdb/data:build",
+    "data:build": "nx run @optcgdb/data:build",
     "format": "prettier apps/**/*.{ts,js,json} --write",
     "lint": "eslint apps/**/*.{ts,js,json}",
     "lint:fix": "eslint apps/**/*.{ts,js,json} --fix",
     "prepare": "husky",
-    "watch:all": "nx run-many -t watch --parallel"
+    "sst:build": "sst build",
+    "sst:console": "sst console",
+    "sst:deploy": "sst deploy",
+    "sst:dev": "sst dev --stage=local",
+    "sst:remove": "sst remove"
   },
   "lint-staged": {
     "apps/**/*.{js,ts}": "eslint --cache --fix",
@@ -22,9 +29,12 @@
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@tsconfig/node18": "^18.2.2",
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
+    "aws-cdk-lib": "^2.132.1",
+    "constructs": "^10.3.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -34,6 +44,7 @@
     "nx": "^18.0.7",
     "prettier": "^3.2.5",
     "prettier-plugin-packagejson": "^2.4.12",
+    "sst": "^2.40.6",
     "typescript": "^5.3.3"
   }
 }

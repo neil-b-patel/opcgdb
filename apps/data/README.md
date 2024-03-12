@@ -4,11 +4,13 @@ Main data source for the `@optcgdb/api`.
 
 ## TODO
 
-[] Use Zod for types + Schemas
-[] Simplify type names
-[] Make scraper a CLI receiving parameters
-[] Add NX command for "per language" scraping
-[] Make scraper triggerable from workspace package.json
+- [ ] Use Zod for types + Schemas
+- [ ] Simplify type names
+- [ ] Make scraper a CLI receiving parameters
+- [ ] Add checks to ignore files that already exist
+- [ ] Add flag to force re-scraping pages that are already saved
+- [ ] Add NX command for "per language" scraping
+- [ ] Make scraper triggerable from workspace package.json
 
 ## Getting started
 
