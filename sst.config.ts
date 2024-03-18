@@ -1,6 +1,7 @@
 import { SSTConfig } from 'sst';
 
 import { ApiStack } from './stacks/ApiStack.js';
+import { CdnStack } from './stacks/CDNStack.js';
 
 const config: SSTConfig = {
   config() {
@@ -11,7 +12,7 @@ const config: SSTConfig = {
     };
   },
   stacks(app) {
-    app.stack(ApiStack);
+    app.stack(ApiStack).stack(CdnStack);
   },
 };
 

@@ -3,19 +3,21 @@ import * as route53 from 'aws-cdk-lib/aws-route53';
 import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import { StackContext, StaticSite } from 'sst/constructs';
 
-export function ApiStack({ stack }: StackContext) {
-  const { stage } = stack;
-  const isProd = stage === 'production';
+export function CdnStack({ stack }: StackContext) {
+  // Disabling production checks until the domani is acquired
+  //const { stage } = stack;
+  const isProd = false; //stage === 'production';
 
   // Look up hosted zone
-  const hostedZone = route53.HostedZone.fromLookup(stack, 'HostedZone', {
-    domainName: process.env.MAIN_DOMAIN!,
-  });
+  const hostedZone = isProd
+    ? route53.HostedZone.fromLookup(stack, 'HostedZone', {
+        domainName: process.env.MAIN_DOMAIN!,
+      })
+    : undefined;
 
   const cdn = new StaticSite(stack, 'opcgdb-cdn', {
     path: 'apps/cdn',
     buildOutput: 'assets/public',
-    buildCommand: 'npm run build',
     assets: {
       fileOptions: [
         {
@@ -32,7 +34,7 @@ export function ApiStack({ stack }: StackContext) {
       ? {
           domainName: process.env.CDN_DOMAIN!,
           alternateNames: [`www.${process.env.CDN_DOMAIN}`],
-          hostedZone: hostedZone.hostedZoneArn,
+          hostedZone: hostedZone?.hostedZoneArn,
           cdk: {
             certificate: acm.Certificate.fromCertificateArn(
               stack,
@@ -48,7 +50,7 @@ export function ApiStack({ stack }: StackContext) {
     // Create A and AAAA records for the alternate domain names
     const recordProps = {
       recordName: process.env.CDN_DOMAIN!,
-      zone: hostedZone,
+      zone: hostedZone!, // Guaranteeing it exists in production
       target: route53.RecordTarget.fromAlias(
         new route53Targets.CloudFrontTarget(cdn.cdk.distribution)
       ),
