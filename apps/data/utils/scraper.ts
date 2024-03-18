@@ -6,7 +6,7 @@ import getPageDOM from './getPageDOM.js';
 import getSeriesData from './getSeriesData.js';
 import writeSeriesFile from './writeSeriesFile.js';
 
-const crawl = async (lang: OPTCGLanguage, force = false): Promise<void> => {
+const crawl = async (lang: OPTCGLanguage, force: boolean): Promise<void> => {
   const url =
     lang === 'en'
       ? `https://en.onepiece-cardgame.com/cardlist/`
@@ -48,9 +48,9 @@ const crawl = async (lang: OPTCGLanguage, force = false): Promise<void> => {
   console.info('✅ [ DONE ]', 'Data scraped and files written', `(${lang})`);
 };
 
-const run = async () => {
-  await crawl('en');
-  await crawl('jp');
+const run = async (force = false) => {
+  await crawl('en', force);
+  await crawl('jp', force);
 };
 
 run();

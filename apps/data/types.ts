@@ -3,7 +3,12 @@ export type OPTCGLanguage = 'en' | 'jp';
 export type OPTCGSet = {
   id: string;
   name: string;
+  siteId: string[];
 };
+
+export type SetList = OPTCGSet[];
+
+export type SetMap = Record<OPTCGLanguage, SetList>;
 
 export type CardRarity = 'C' | 'UC' | 'R' | 'SR' | 'L';
 export type CardColor = 'red' | 'blue' | 'yellow' | 'green' | 'black' | 'white';

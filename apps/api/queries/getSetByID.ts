@@ -1,9 +1,9 @@
-import { sets } from '@opcgdb/data';
+import { OPTCGLanguage, OPTCGSet, sets } from '@opcgdb/data';
 
 import { type ApiResponse } from '../types.js';
 
-const getSetById = (id: string): ApiResponse => {
-  const set = sets.find((set) => set.id === id);
+const getSetById = (id: string, lang: OPTCGLanguage = 'en'): ApiResponse => {
+  const set = sets[lang].find((set: OPTCGSet) => set.id === id);
   if (!set) {
     return {
       status: 404,

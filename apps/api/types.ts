@@ -33,6 +33,12 @@ export const SetByIdParamsSchema = z
   })
   .partial();
 
+export const SetByIdQuerySchema = z
+  .object({
+    lang: OPTCGLanguageSchema,
+  })
+  .partial();
+
 export const CardByIdParamsSchema = z
   .object({
     id: z.string(),
