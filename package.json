@@ -10,15 +10,16 @@
     "apps/*"
   ],
   "scripts": {
-    "cdn:build": "nx run @opcgdb/cdn:build --skip-nx-cache",
-    "data:build": "nx run @opcgdb/data:build",
+    "build": "nx run-many --target=build --output-style=stream --parallel=1 --maxParallel=1",
+    "cdn:build": "nx run @opcgdb/cdn:build --skip-nx-cache --output-style=stream",
+    "data:build": "nx run @opcgdb/data:build --output-style=stream",
     "format": "prettier apps/**/*.{ts,js,json} --write",
     "lint": "eslint apps/**/*.{ts,js,json}",
     "lint:fix": "eslint apps/**/*.{ts,js,json} --fix",
     "prepare": "husky",
     "sst:build": "sst build",
     "sst:console": "sst console",
-    "sst:deploy": "sst deploy",
+    "sst:deploy": "sst deploy --stage=production",
     "sst:dev": "sst dev --stage=local",
     "sst:remove": "sst remove"
   },
