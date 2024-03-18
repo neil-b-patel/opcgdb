@@ -7,11 +7,8 @@
   "author": "Marcos Mellado <marcos@mellado.dev>",
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev --host",
     "generate": "nuxt generate",
-    "postinstall": "nuxt prepare",
-    "preview": "nuxt preview"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@opcgdb/data": "workspace:^",

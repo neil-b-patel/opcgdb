@@ -4,18 +4,18 @@
   "sourceRoot": "apps/client",
   "projectType": "application",
   "targets": {
-    "images:en": {
+    "build": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/client",
-        "commands": ["vite-node ./scripts/download-images.ts --lang en"]
+        "commands": ["nuxt build"]
       }
     },
-    "images:jp": {
+    "dev": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/client",
-        "commands": ["vite-node ./scripts/download-images.ts --lang jp"]
+        "commands": ["nuxt dev --host"]
       }
     }
   }
