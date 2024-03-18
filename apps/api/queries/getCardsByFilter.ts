@@ -7,14 +7,18 @@ const getCardsByFilters = (_filters: QueryFilter, lang: OPTCGLanguage = 'en'): A
   try {
     // Validate filters, if it fails, it will throw an error to be caught by the caller
     const filters = QueryFilterSchema.parse(_filters);
+    const filterKeys = Object.keys(filters) as (keyof QueryFilter)[];
 
     // Apply all the filters passed to the card list
-    const cardList = Object.keys(filters)
+    const cardList = filterKeys
       .filter((k: keyof QueryFilter) => !!filters[k]) // only check filters that have a value
       .reduce((acc: OPTCGCardList, filterType: keyof QueryFilter) => {
-        const filterFn: (c: OPTCGCardList, t: QueryFilter[typeof filterType]) => OPTCGCardList =
-          filterMap[filterType];
-        return filterFn(acc, filters[filterType]);
+        const currFilter = filters[filterType];
+        const filterFn = filterMap[filterType] as (
+          c: OPTCGCardList,
+          t: string | boolean | undefined
+        ) => OPTCGCardList;
+        return filterFn(acc, currFilter);
       }, cards[lang]);
 
     return {
