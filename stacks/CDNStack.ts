@@ -5,8 +5,11 @@ import { StackContext, StaticSite } from 'sst/constructs';
 
 export function CdnStack({ stack }: StackContext) {
   // Disabling production checks until the domani is acquired
-  //const { stage } = stack;
-  const isProd = false; //stage === 'production';
+  const { stage } = stack;
+  const isProd =
+    stage === 'production' &&
+    process.env.MAIN_DOMAIN !== undefined &&
+    process.env.CDN_DOMAIN !== undefined;
 
   // Look up hosted zone
   const hostedZone = isProd
