@@ -1,4 +1,4 @@
-import { type OPTCGCardList } from '@optcgdb/data';
+import { type OPTCGCardList } from '@opcgdb/data';
 
 import { type QueryFilter } from '../types.js';
 

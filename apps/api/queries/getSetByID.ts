@@ -1,4 +1,4 @@
-import { sets } from '@optcgdb/data';
+import { sets } from '@opcgdb/data';
 
 import { type ApiResponse } from '../types.js';
 

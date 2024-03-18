@@ -1,4 +1,4 @@
-# @optcgdb/api
+# @opcgdb/api
 
 This is the main API to be consumed in other projects. It's still very much WIP
 

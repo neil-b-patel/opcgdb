@@ -1,4 +1,4 @@
-import { cards, type OPTCGLanguage } from '@optcgdb/data';
+import { cards, type OPTCGLanguage } from '@opcgdb/data';
 
 import { type ApiResponse } from '../types.js';
 

@@ -1,4 +1,4 @@
-import { cards, type OPTCGCardList, type OPTCGLanguage } from '@optcgdb/data';
+import { cards, type OPTCGCardList, type OPTCGLanguage } from '@opcgdb/data';
 
 import { type ApiResponse, type QueryFilter, QueryFilterSchema } from '../types.js';
 import filterMap from '../utils/filterMap.js';
