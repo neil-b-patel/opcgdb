@@ -10,14 +10,24 @@ import type { OPTCGCard, OPTCGLanguage } from '@opcgdb/data';
 const cwd = process.cwd();
 const filesSkipped = [];
 
+type ImagesMeta = {
+  total: number;
+  current: number;
+};
+
 // Function to download an image from a URL and save it to a directory
-const downloadImage = async (url: string, directory: string, retryCount = 3) => {
+const downloadImage = async (url: string, directory: string, meta: ImagesMeta, retryCount = 3) => {
   const fileName = path.basename(url);
   const filePath = path.join(directory, fileName);
 
   // Check if the file already exists
   if (fs.existsSync(filePath)) {
-    // console.info(`⚠️ ${fileName} already exists. Skipping.`);
+    console.info(
+      `⚙️`,
+      `(${meta.current}/${meta.total})`,
+      `[ SKIPPED ]`,
+      `${fileName} → ./${path.relative(cwd, filePath)}`
+    );
     filesSkipped.push(fileName);
     return Promise.resolve();
   }
@@ -29,7 +39,12 @@ const downloadImage = async (url: string, directory: string, retryCount = 3) => 
       response.pipe(file);
       file.on('finish', () => {
         file.close(() => {
-          console.info(`⬇️ ${fileName} → ./${path.relative(cwd, filePath)}`);
+          console.info(
+            '📦',
+            `(${meta.current}/${meta.total})`,
+            '[ DONE ]',
+            `${fileName} → ./${path.relative(cwd, filePath)}`
+          );
           resolve();
         });
       });
@@ -42,7 +57,7 @@ const downloadImage = async (url: string, directory: string, retryCount = 3) => 
           console.info(`Retrying ${fileName}... (${retryCount} retries left)`);
           // Exponential backoff: wait before retrying
           await new Promise((resolve) => setTimeout(resolve, Math.pow(2, 4 - retryCount) * 1000));
-          await downloadImage(url, directory, retryCount - 1);
+          await downloadImage(url, directory, meta, retryCount - 1);
         } else {
           reject(error);
         }
@@ -53,8 +68,8 @@ const downloadImage = async (url: string, directory: string, retryCount = 3) => 
 
 // Function to download multiple images from an array of URLs
 const downloadImages = async (urls: string[], directory: string): Promise<void> => {
-  for (const url of urls) {
-    await downloadImage(url, directory);
+  for (const [idx, url] of urls.entries()) {
+    await downloadImage(url, directory, { total: urls.length, current: idx + 1 });
   }
 };
 
@@ -87,6 +102,8 @@ const run = async (lang: OPTCGLanguage) => {
     fse.ensureDirSync(outDir);
     await downloadImages(imageList, outDir);
   }
+
+  console.info('✅ [ DONE ]', 'Images downloaded', `(${lang})`);
 };
 
 export default run;
