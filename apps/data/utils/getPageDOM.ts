@@ -1,5 +1,5 @@
-import * as cheerio from "cheerio";
-import fetch from "node-fetch";
+import * as cheerio from 'cheerio';
+import fetch from 'node-fetch';
 
 async function getPageDOM(url: string): Promise<cheerio.CheerioAPI> {
   try {
@@ -10,7 +10,8 @@ async function getPageDOM(url: string): Promise<cheerio.CheerioAPI> {
     // Load the HTML content into cheerio
     return cheerio.load(html);
   } catch (error) {
-    console.error("Error fetching webpage:", error);
+    console.error('Error fetching webpage:', error);
+    return cheerio.load('');
   }
 }
 

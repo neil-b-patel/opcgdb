@@ -3,6 +3,12 @@ import { CheerioAPI } from 'cheerio';
 import { OPTCGCardList } from '../types.js';
 
 const getSetNameAndID = (input: string) => {
+  // Exception for JP - ST13 doesn't include set ID, only name
+  if (input.includes('The Three Brothers')) {
+    return 'ST13';
+  }
+
+  // Exception for EN - some cards with different format in set
   if (input.startsWith('OP')) {
     return input.replace('-', '').trim();
   }
@@ -16,7 +22,7 @@ const getSeriesData = ($series: CheerioAPI): OPTCGCardList => {
   return $cards
     .map((_, card) => {
       const $res = $series(card);
-      const id = $res.attr('data-src');
+      const id = $res.attr('data-src') || '';
 
       const $card = $series(id);
       const cardHead = $card.find('.infoCol').text().split('|');

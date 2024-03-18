@@ -1,6 +1,6 @@
-# @optcgdb/data
+# @opcgdb/data
 
-Main data source for the `@optcgdb/api`.
+Main data source for the `@opcgdb/api`.
 
 ## TODO
 
