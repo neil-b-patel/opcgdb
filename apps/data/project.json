@@ -11,18 +11,19 @@
         "commands": ["vite-node ./utils/scraper.ts"]
       }
     },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["scrape"],
+      "options": {
+        "cwd": "apps/data",
+        "commands": ["rm -rf dist", "tsc"]
+      }
+    },
     "watch": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/data",
         "commands": ["rm -rf dist", "tsc -w"]
-      }
-    },
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "apps/data",
-        "commands": ["rm -rf dist", "tsc"]
       }
     }
   }

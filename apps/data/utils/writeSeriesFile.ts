@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 
 import { type OPTCGCardList, type OPTCGLanguage, type OPTCGSeriesCorrections } from '../types.js';
 
@@ -15,14 +14,15 @@ const sanitize = (input: string, lang: OPTCGLanguage): string => {
   }, input);
 };
 
-const writeSeriesFile = async (series: string, lang: OPTCGLanguage, data: OPTCGCardList) => {
+const writeSeriesFile = (
+  series: string,
+  lang: OPTCGLanguage,
+  data: OPTCGCardList,
+  outFile: string
+) => {
   try {
-    const outDir = path.resolve(__dirname, `../cardlist/${lang}`);
-    const outFile = path.resolve(outDir, `${series}.json`);
     const outData = sanitize(JSON.stringify(data, null, 2), lang);
-    await fs.writeFile(outFile, outData, () => {
-      console.info(`✅ ${series} (${lang})`);
-    });
+    fs.writeFileSync(outFile, outData);
   } catch (e: any) {
     console.error(`❌ ${series} (${lang})\n\n`, e.message);
   }
