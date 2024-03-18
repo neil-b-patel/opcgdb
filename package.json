@@ -1,5 +1,5 @@
 {
-  "name": "optcgdb",
+  "name": "opcgdb",
   "version": "1.0.0",
   "private": true,
   "description": "Monorepo hosting series of packages for the One Piece TCG DB",
@@ -10,7 +10,8 @@
     "apps/*"
   ],
   "scripts": {
-    "data:build": "nx run @optcgdb/data:build",
+    "cdn:build": "nx run @opcgdb/cdn:build --skip-nx-cache",
+    "data:build": "nx run @opcgdb/data:build",
     "format": "prettier apps/**/*.{ts,js,json} --write",
     "lint": "eslint apps/**/*.{ts,js,json}",
     "lint:fix": "eslint apps/**/*.{ts,js,json} --fix",
@@ -33,8 +34,8 @@
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
-    "aws-cdk-lib": "^2.132.1",
-    "constructs": "^10.3.0",
+    "aws-cdk-lib": "2.132.1",
+    "constructs": "10.3.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -44,7 +45,7 @@
     "nx": "^18.0.7",
     "prettier": "^3.2.5",
     "prettier-plugin-packagejson": "^2.4.12",
-    "sst": "^2.40.6",
+    "sst": "^2.41.2",
     "typescript": "^5.3.3"
   }
 }

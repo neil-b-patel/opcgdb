@@ -1,4 +1,4 @@
-# OPTCGDB
+# opcgdb
 
 This repository houses different projects as part of an effort to create a public card database for the One Piece Trading Card game.
 
@@ -20,17 +20,17 @@ This will install dependencies for all of the apps in the repo. Additionally, yo
 
 Here is a list of the different applications hosted in this repo. Deeper READMEs can be found within each app's directory.
 
-### @optcgdb/data
+### @opcgdb/data
 
 The source of card data. Includes the scraper and exposes the cards and set data in JSON format.
 
-### @optcgdb/api
+### @opcgdb/api
 
-The API project. It consumes the information from `@optcgdb/data` and exposes it using different endpoints.
+The API project. It consumes the information from `@opcgdb/data` and exposes it using different endpoints.
 
-### @optcgdb/client
+### @opcgdb/client
 
-This is a basic UI application to explore the database. It uses the `@optcgdb/data` as its data source.
+This is a basic UI application to explore the database. It uses the `@opcgdb/data` as its data source.
 
 > [!CAUTION]
 > This is a fan made project. All information and assets provided by the applications housed by this repository are owned by: BANDAI, BANDAI CARD GAMES, BANDAI NAMCO, Eiichiro Oda/Shueisha, Toei Animation. In case of issues, the project may be taken down

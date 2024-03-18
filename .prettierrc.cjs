@@ -15,8 +15,8 @@ module.exports = {
     // Node modules
     '<THIRD_PARTY_MODULES>',
 
-    // Resn libraries
-    '^@optcgdb/(.*)$',
+    // Workspace libraries
+    '^@opcgdb/(.*)$',
 
     // Local imports
     '^.[.]{0,1}/(?!.*.(scss|css|sass)$).*$',

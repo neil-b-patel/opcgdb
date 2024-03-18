@@ -6,14 +6,15 @@
     "skipLibCheck": true,
     "declaration": true,
     "noImplicitAny": true,
+    "jsx": "react",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ESNext",
     "allowJs": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "removeComments": false,
+    "removeComments": true,
     "lib": ["ESNext"]
   },
-  "exclude": ["node_modules", ".vscode/*", "dist"]
+  "exclude": ["node_modules", ".vscode/*", "dist", ".sst", ".build", ".nx/cache"]
 }
