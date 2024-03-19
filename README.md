@@ -1,5 +1,7 @@
 # opcgdb
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T841YPJ)
+
 This repository houses different projects as part of an effort to create a public card database for the One Piece Card Game.
 
 The objective is to have this as a hosted API to which people can sign up and consume publicly. However, the intention is for it to be built as an open source project which can alsop be self hosted by people within their own infrastructure.
@@ -103,7 +105,15 @@ If you only want to exclude the CDN or the API from your deploymnent, you can re
 
 ## Things missing
 
-For some reason the information on different DON!! cards for the different sets is not included in the lists of the official website, so an alternative method to fetch these cards will be needed.
+- Implement Token authentication on the API
+- Procure production domains
+- For some reason the information on different DON!! cards for the different sets is not included in the lists of the official website, so an alternative method to fetch these cards will be needed.
+
+## Support
+
+If you'd like to support this project, you're welcome to contribute either via pull requests to improve and maintain the code. If coding isn't your thing, you can also supprot via donations to help fund the project. The funds will be used to support the continuous development of the tools as well as to keep the infrastructure running (servers, domains, CDN, etc).
+
+You can support directly through my Kofi page [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T841YPJ).
 
 > [!CAUTION]
 > This is a fan made project. All information and assets provided by the applications housed by this repository are owned by: BANDAI, BANDAI CARD GAMES, BANDAI NAMCO, Eiichiro Oda/Shueisha, Toei Animation. In case of issues, the project may be taken down
