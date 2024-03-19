@@ -1,4 +1,6 @@
 import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import * as route53Targets from 'aws-cdk-lib/aws-route53-targets';
 import { StackContext, StaticSite } from 'sst/constructs';
 
 export function CdnStack({ stack }: StackContext) {
@@ -7,13 +9,6 @@ export function CdnStack({ stack }: StackContext) {
     stage === 'production' &&
     process.env.MAIN_DOMAIN !== undefined &&
     process.env.CDN_DOMAIN !== undefined;
-
-  // Look up hosted zone
-  // const hostedZone = isProd
-  //   ? route53.HostedZone.fromLookup(stack, 'HostedZone', {
-  //       domainName: process.env.MAIN_DOMAIN!,
-  //     })
-  //   : undefined;
 
   const cdn = new StaticSite(stack, 'opcgdb-cdn', {
     path: 'apps/cdn',
@@ -34,7 +29,6 @@ export function CdnStack({ stack }: StackContext) {
       ? {
           domainName: process.env.CDN_DOMAIN!,
           alternateNames: [`www.${process.env.CDN_DOMAIN}`],
-          //hostedZone: hostedZone?.hostedZoneArn,
           cdk: {
             certificate: acm.Certificate.fromCertificateArn(
               stack,
@@ -46,18 +40,20 @@ export function CdnStack({ stack }: StackContext) {
       : undefined,
   });
 
-  // if (isProd && cdn.cdk) {
-  //   // Create A and AAAA records for the alternate domain names
-  //   const recordProps = {
-  //     recordName: process.env.CDN_DOMAIN!,
-  //     zone: hostedZone!, // Guaranteeing it exists in production
-  //     target: route53.RecordTarget.fromAlias(
-  //       new route53Targets.CloudFrontTarget(cdn.cdk.distribution)
-  //     ),
-  //   };
-  //   new route53.ARecord(stack, 'AlternateARecord', recordProps);
-  //   new route53.AaaaRecord(stack, 'AlternateAAAARecord', recordProps);
-  // }
+  if (isProd && cdn.cdk) {
+    const hostedZone = route53.HostedZone.fromLookup(stack, 'HostedZone', {
+      domainName: process.env.MAIN_DOMAIN!,
+    });
+    const recordProps = {
+      recordName: process.env.CDN_DOMAIN!,
+      zone: hostedZone,
+      target: route53.RecordTarget.fromAlias(
+        new route53Targets.CloudFrontTarget(cdn.cdk.distribution)
+      ),
+    };
+    new route53.ARecord(stack, 'AlternateARecord', recordProps);
+    new route53.AaaaRecord(stack, 'AlternateAAAARecord', recordProps);
+  }
 
   stack.addOutputs({
     CdnEndpoint: cdn.url,

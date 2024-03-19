@@ -5,23 +5,14 @@ import routes from '../apps/api/handlers/routes.js';
 
 export function ApiStack({ stack }: StackContext) {
   const { stage } = stack;
-  const isProd =
-    stage === 'production' &&
-    process.env.MAIN_DOMAIN !== undefined &&
-    process.env.API_DOMAIN !== undefined;
-
-  // const hostedZone = isProd
-  //   ? route53.HostedZone.fromLookup(stack, 'HostedZone', {
-  //       domainName: process.env.MAIN_DOMAIN!,
-  //     })
-  //   : undefined;
+  const isProd = stage === 'production' && process.env.API_DOMAIN !== undefined;
 
   const api = new Api(stack, 'opcgdb-api', {
     // List of routes
     customDomain: {
       domainName: isProd ? process.env.API_DOMAIN! : `local.${process.env.API_DOMAIN!}`,
-      // hostedZone: hostedZone?.hostedZoneArn,
       path: 'api/v1',
+      hostedZone: process.env.API_DOMAIN!,
       cdk: {
         certificate: acm.Certificate.fromCertificateArn(
           stack,
