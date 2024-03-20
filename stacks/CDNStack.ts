@@ -10,7 +10,7 @@ export function CdnStack({ stack }: StackContext) {
     process.env.MAIN_DOMAIN !== undefined &&
     process.env.CDN_DOMAIN !== undefined;
 
-  const cdn = new StaticSite(stack, 'opcgdb-cdn', {
+  const cdn = new StaticSite(stack, 'cdn', {
     path: 'apps/cdn',
     buildOutput: 'assets/public',
     assets: {
