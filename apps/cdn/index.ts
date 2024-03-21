@@ -2,7 +2,7 @@ import fs from 'fs';
 import fse from 'fs-extra/esm';
 import path from 'path';
 
-import { cards, type OPTCGLanguage, sets } from '@opcgdb/data';
+import { cards, type OPLang, sets } from '@opcgdb/data';
 
 import compressImages from './lib/compress-images.js';
 import downloadImages from './lib/download-images.js';
@@ -16,7 +16,7 @@ const pkg = fse.readJsonSync(path.resolve(__dirname, './package.json'));
 
 const _lastUpdated = new Date().toISOString();
 
-const process = async (lang: OPTCGLanguage) => {
+const process = async (lang: OPLang) => {
   // Download images
   await downloadImages(lang);
 

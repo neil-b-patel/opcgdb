@@ -1,19 +1,19 @@
-export type OPTCGLanguage = 'en' | 'jp';
+export type OPLang = 'en' | 'jp';
 
-export type OPTCGSet = {
+export type OPSet = {
   id: string;
   name: string;
   siteId: string[];
 };
 
-export type SetList = OPTCGSet[];
+export type OPSetList = OPSet[];
 
-export type SetMap = Record<OPTCGLanguage, SetList>;
+export type OPSetMap = Record<OPLang, OPSetList>;
 
-export type CardRarity = 'C' | 'UC' | 'R' | 'SR' | 'L';
-export type CardColor = 'red' | 'blue' | 'yellow' | 'green' | 'black' | 'white';
+export type OPCardRarity = 'C' | 'UC' | 'R' | 'SR' | 'L';
+export type OPCardColor = 'red' | 'blue' | 'yellow' | 'green' | 'black' | 'white';
 
-export type OPTCGCard = {
+export type OPCard = {
   // Required data
   id: string;
   number: string;
@@ -33,8 +33,13 @@ export type OPTCGCard = {
   trigger?: string;
 };
 
-export type OPTCGCardList = OPTCGCard[];
+export type OPCardList = OPCard[];
 
-export type OPTCGCardMap = Record<OPTCGLanguage, OPTCGCardList>;
+export type OPCardMap = Record<OPLang, OPCardList>;
 
-export type OPTCGSeriesCorrections = Record<OPTCGLanguage, { from: string; to: string }[]>;
+export type OPSeriesCorrections = Record<OPLang, { from: string; to: string }[]>;
+
+export type OPCGDB = {
+  cards: OPCardMap;
+  sets: OPSetMap;
+};

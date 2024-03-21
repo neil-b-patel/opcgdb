@@ -1,45 +1,45 @@
-import { type OPTCGCardList } from '@opcgdb/data';
+import { type OPCardList } from '@opcgdb/data';
 
 import { type QueryFilter } from '../types.js';
 
 const filterMap = {
-  number: (cards: OPTCGCardList, t: QueryFilter['number']): OPTCGCardList => {
+  number: (cards: OPCardList, t: QueryFilter['number']): OPCardList => {
     return cards.filter(({ number }) => number === t);
   },
-  set: (cards: OPTCGCardList, t: QueryFilter['set']): OPTCGCardList => {
+  set: (cards: OPCardList, t: QueryFilter['set']): OPCardList => {
     return cards.filter(({ set }) => set === t);
   },
-  rarity: (cards: OPTCGCardList, t: QueryFilter['rarity']): OPTCGCardList => {
+  rarity: (cards: OPCardList, t: QueryFilter['rarity']): OPCardList => {
     return cards.filter(({ rarity }) => rarity === t);
   },
-  color: (cards: OPTCGCardList, t: QueryFilter['color']): OPTCGCardList => {
+  color: (cards: OPCardList, t: QueryFilter['color']): OPCardList => {
     return cards.filter(({ color }) => color.includes(t as string));
   },
-  category: (cards: OPTCGCardList, t: QueryFilter['category']): OPTCGCardList => {
+  category: (cards: OPCardList, t: QueryFilter['category']): OPCardList => {
     return cards.filter(({ category }) => category === t);
   },
-  life: (cards: OPTCGCardList, t: QueryFilter['life']): OPTCGCardList => {
+  life: (cards: OPCardList, t: QueryFilter['life']): OPCardList => {
     return cards.filter(({ life }) => life === t);
   },
-  attribute: (cards: OPTCGCardList, t: QueryFilter['attribute']): OPTCGCardList => {
+  attribute: (cards: OPCardList, t: QueryFilter['attribute']): OPCardList => {
     return cards.filter(({ attribute }) => attribute === t);
   },
-  power: (cards: OPTCGCardList, t: QueryFilter['power']): OPTCGCardList => {
+  power: (cards: OPCardList, t: QueryFilter['power']): OPCardList => {
     return cards.filter(({ power }) => power === t);
   },
-  cost: (cards: OPTCGCardList, t: QueryFilter['cost']): OPTCGCardList => {
+  cost: (cards: OPCardList, t: QueryFilter['cost']): OPCardList => {
     return cards.filter(({ cost }) => cost === t);
   },
-  type: (cards: OPTCGCardList, t: QueryFilter['type']): OPTCGCardList => {
+  type: (cards: OPCardList, t: QueryFilter['type']): OPCardList => {
     return cards.filter(({ type }) => type.includes(t as string));
   },
-  name: (cards: OPTCGCardList, t: QueryFilter['name']): OPTCGCardList => {
+  name: (cards: OPCardList, t: QueryFilter['name']): OPCardList => {
     return cards.filter(({ name }) => name === t);
   },
-  counter: (cards: OPTCGCardList, t: QueryFilter['counter']): OPTCGCardList => {
+  counter: (cards: OPCardList, t: QueryFilter['counter']): OPCardList => {
     return cards.filter(({ counter }) => t === !!counter);
   },
-  trigger: (cards: OPTCGCardList, t: QueryFilter['trigger']): OPTCGCardList => {
+  trigger: (cards: OPCardList, t: QueryFilter['trigger']): OPCardList => {
     return cards.filter(({ trigger }) => t === !!trigger);
   },
 };

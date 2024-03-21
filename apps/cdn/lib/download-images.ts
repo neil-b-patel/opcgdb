@@ -5,7 +5,7 @@ import https from 'https';
 import path from 'path';
 
 import { cards } from '@opcgdb/data';
-import type { OPTCGCard, OPTCGLanguage } from '@opcgdb/data';
+import type { OPCard, OPLang } from '@opcgdb/data';
 
 const cwd = process.cwd();
 const filesSkipped = [];
@@ -73,30 +73,14 @@ const downloadImages = async (urls: string[], directory: string): Promise<void> 
   }
 };
 
-const run = async (lang: OPTCGLanguage) => {
-  // // Check if --lang argument is provided
-  // const langIndex = process.argv.indexOf('--lang');
-  // if (langIndex === -1 || langIndex === process.argv.length - 1) {
-  //   console.error('Error: --lang parameter is required');
-  //   process.exit(1); // Exit the script with a non-zero exit code
-  // }
-  // const lang = process.argv[langIndex + 1] as OPTCGLanguage;
-
-  // const validLangs = ['en', 'jp'];
-
-  // if (!validLangs.includes(lang)) {
-  //   console.error("Error: Only 'en' and 'jp' languages are supported.");
-  //   process.exit(1); // Exit the script with a non-zero exit code
-  // }
-
+const run = async (lang: OPLang) => {
   const srcDomain =
     lang === 'en'
       ? `https://en.onepiece-cardgame.com/images/cardlist/card/`
       : `https://asia-en.onepiece-cardgame.com/images/cardlist/card/`;
   const outDir = path.resolve(__dirname, `../assets/raw/${lang}`);
 
-  const imageList: string[] =
-    cards[lang].map((card: OPTCGCard) => `${srcDomain}${card.id}.png`) || [];
+  const imageList: string[] = cards[lang].map((card: OPCard) => `${srcDomain}${card.id}.png`) || [];
 
   if (imageList.length) {
     fse.ensureDirSync(outDir);

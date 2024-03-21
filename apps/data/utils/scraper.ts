@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-import { OPTCGLanguage } from '../types.js';
+import { OPLang } from '../types.js';
 import getPageDOM from './getPageDOM.js';
 import getSeriesData from './getSeriesData.js';
 import writeSeriesFile from './writeSeriesFile.js';
 
-const crawl = async (lang: OPTCGLanguage, force: boolean): Promise<void> => {
+const crawl = async (lang: OPLang, force: boolean): Promise<void> => {
   const url =
     lang === 'en'
       ? `https://en.onepiece-cardgame.com/cardlist/`

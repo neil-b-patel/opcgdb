@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { z } from 'zod';
 
-const OPTCGLanguageSchema = z.enum(['en', 'jp']).optional();
+const OPLangSchema = z.enum(['en', 'jp']).optional();
 
 export const QueryFilterSchema = z.object({
   number: z.string().optional(),
@@ -35,7 +35,7 @@ export const SetByIdParamsSchema = z
 
 export const SetByIdQuerySchema = z
   .object({
-    lang: OPTCGLanguageSchema,
+    lang: OPLangSchema,
   })
   .partial();
 
@@ -47,13 +47,13 @@ export const CardByIdParamsSchema = z
 
 export const CardsByIdQuerySchema = z
   .object({
-    lang: OPTCGLanguageSchema,
+    lang: OPLangSchema,
   })
   .partial();
 
 export const CardsByNumberParamsSchema = z
   .object({
-    lang: OPTCGLanguageSchema,
+    lang: OPLangSchema,
   })
   .partial();
 
@@ -68,7 +68,7 @@ export const SearchCardQuerySchema = z
     ...QueryFilterSchema.shape,
     trigger: z.enum(['0', '1']),
     counter: z.enum(['0', '1']),
-    lang: OPTCGLanguageSchema,
+    lang: OPLangSchema,
   })
   .partial();
 

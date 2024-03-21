@@ -1,8 +1,8 @@
-import { cards, type OPTCGLanguage } from '@opcgdb/data';
+import { cards, type OPLang } from '@opcgdb/data';
 
 import { type ApiResponse } from '../types.js';
 
-const getCardById = (id: string, lang: OPTCGLanguage = 'en'): ApiResponse => {
+const getCardById = (id: string, lang: OPLang = 'en'): ApiResponse => {
   const card = cards[lang].find((card) => card.id === id);
   if (!card) {
     return {

@@ -1,6 +1,6 @@
 import { CheerioAPI } from 'cheerio';
 
-import { OPTCGCardList } from '../types.js';
+import { OPCardList } from '../types.js';
 
 const getSetNameAndID = (input: string) => {
   // Exception for JP - ST13 doesn't include set ID, only name
@@ -17,7 +17,7 @@ const getSetNameAndID = (input: string) => {
   return id;
 };
 
-const getSeriesData = ($series: CheerioAPI): OPTCGCardList => {
+const getSeriesData = ($series: CheerioAPI): OPCardList => {
   const $cards = $series('.resultCol > a');
   return $cards
     .map((_, card) => {

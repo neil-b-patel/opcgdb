@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name OPTCG Crawler
-// @description Get card information from the OPTCG website
+// @name OPCG Scraper
+// @description Get card information from the OPCG website
 // @version 1.0.0
 // @match https://en.onepiece-cardgame.com/cardlist/*
 // @match https://asia-en.onepiece-cardgame.com/cardlist/*

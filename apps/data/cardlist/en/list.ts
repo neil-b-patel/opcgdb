@@ -1,4 +1,4 @@
-import type { OPTCGCardList } from '../../types.js';
+import type { OPCardList } from '../../types.js';
 import st01 from './569001.json';
 import st02 from './569002.json';
 import st03 from './569003.json';
@@ -20,7 +20,7 @@ import op06 from './569106.json';
 import limited from './569801.json';
 import promos from './569901.json';
 
-const cardList: OPTCGCardList = [
+const cardList: OPCardList = [
   ...st01,
   ...st02,
   ...st03,
