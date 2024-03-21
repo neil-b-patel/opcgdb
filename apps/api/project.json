@@ -1,0 +1,23 @@
+{
+  "name": "@opcgdb/api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["scrape"],
+      "options": {
+        "cwd": "apps/api",
+        "commands": ["rm -rf dist", "tsc -p tsconfig.lib.json"]
+      }
+    },
+    "watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/api",
+        "commands": ["rm -rf dist", "tsc -p tsconfig.lib.json"]
+      }
+    }
+  }
+}

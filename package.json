@@ -10,9 +10,11 @@
     "apps/*"
   ],
   "scripts": {
+    "api:build": "nx run @opcgdb/api:build --output-style=stream",
     "build": "nx run-many --target=build --output-style=stream --parallel=1 --maxParallel=1",
     "cdn:build": "nx run @opcgdb/cdn:build --skip-nx-cache --output-style=stream",
-    "data:build": "nx run @opcgdb/data:build --output-style=stream",
+    "client:dev": "nx run @opcgdb/client:dev --output-style=stream",
+    "data:build": "nx run @opcgdb/data:build --skip-nx-cache --output-style=stream",
     "format": "prettier apps/**/*.{ts,js,json} --write",
     "lint": "eslint apps/**/*.{ts,js,json}",
     "lint:fix": "eslint apps/**/*.{ts,js,json} --fix",
