@@ -1,10 +1,9 @@
-import { cards } from '@opcgdb/data';
-import type { OPCardList, OPLang } from '@opcgdb/data';
+import type { OPCardList } from '@opcgdb/data';
 
 import { type ApiResponse, type QueryFilter, QueryFilterSchema } from '../types.js';
 import filterMap from '../utils/filterMap.js';
 
-const getCardsByFilters = (_filters: QueryFilter, lang: OPLang = 'en'): ApiResponse => {
+const getCardsByFilters = (_filters: QueryFilter, cards: OPCardList): ApiResponse => {
   try {
     // Validate filters, if it fails, it will throw an error to be caught by the caller
     const filters = QueryFilterSchema.parse(_filters);
@@ -20,7 +19,7 @@ const getCardsByFilters = (_filters: QueryFilter, lang: OPLang = 'en'): ApiRespo
           t: string | boolean | undefined
         ) => OPCardList;
         return filterFn(acc, currFilter);
-      }, cards[lang]);
+      }, cards);
 
     return {
       status: 200,

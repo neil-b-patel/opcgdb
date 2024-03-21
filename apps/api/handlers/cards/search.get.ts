@@ -1,5 +1,7 @@
 import { APIGatewayProxyHandlerV2 } from 'aws-lambda';
 
+import { cards } from '@opcgdb/data';
+
 import query from '../../queries/getCardsByFilter.js';
 import { SearchCardQuerySchema } from '../../types.js';
 
@@ -11,7 +13,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       );
     }
     const {
-      lang,
+      lang = 'en',
       number,
       set,
       rarity,
@@ -42,7 +44,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       counter: counter === '1',
       trigger: trigger === '1',
     };
-    const qres = query(filters, lang);
+    const qres = query(filters, cards[lang]);
     return {
       statusCode: qres.status,
       body: JSON.stringify({ ...qres }),

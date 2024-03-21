@@ -1,5 +1,7 @@
 import type { Request, Response } from 'express';
 
+import { cards } from '@opcgdb/data';
+
 import query from '../../queries/getCardsByFilter.js';
 import { SearchCardQuerySchema } from '../../types.js';
 
@@ -11,7 +13,7 @@ const searchCardsByFilter = (req: Request, res: Response) => {
       );
     }
     const {
-      lang,
+      lang = 'en',
       number,
       set,
       rarity,
@@ -42,7 +44,7 @@ const searchCardsByFilter = (req: Request, res: Response) => {
       counter: counter === '1',
       trigger: trigger === '1',
     };
-    const qres = query(filters, lang);
+    const qres = query(filters, cards[lang]);
     res.status(qres.status).json({ ...qres });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
