@@ -4,20 +4,24 @@ import { z } from 'zod';
 const OPLangSchema = z.enum(['en', 'jp']).optional();
 
 export const QueryFilterSchema = z.object({
+  // single option
   number: z.string().optional(),
   set: z.string().optional(),
   rarity: z.enum(['C', 'UC', 'R', 'SR', 'SP', 'L']).optional(),
+  category: z.enum(['CHARACTER', 'LEADER', 'EVENT', 'STAGE']).optional(),
+  attribute: z.string().optional(),
+  type: z.string().optional(),
+  // multi option with inclusive operand
+  name: z.string().optional(),
   color: z
     .string()
     .regex(/^(?:(?!.*\b(\w+)\b.*\b\1\b)(?:Red|Yellow|Purple|Blue|Green|Black)(?:,(?!$))?)+$/)
     .optional(),
-  category: z.enum(['CHARACTER', 'LEADER', 'EVENT', 'STAGE']).optional(),
+  // with operand
   life: z.string().optional(),
-  attribute: z.string().optional(),
   power: z.string().optional(),
   cost: z.string().optional(),
-  type: z.string().optional(),
-  name: z.string().optional(),
+  // booleans
   counter: z.boolean().optional(),
   trigger: z.boolean().optional(),
 });

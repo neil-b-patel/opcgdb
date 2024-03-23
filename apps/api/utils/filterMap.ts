@@ -13,13 +13,17 @@ const filterMap = {
     return cards.filter(({ rarity }) => rarity === t);
   },
   color: (cards: OPCardList, t: QueryFilter['color']): OPCardList => {
-    let filteredCards = cards.slice(); // Make a shallow copy to avoid modifying the original array
+    const colors = t!.split(',');
+    return colors.reduce((acc: OPCardList, color) => {
+      const filteredObjects = cards.filter((obj) => obj.color.includes(color));
 
-    for (const c of t!.split(',')) {
-      filteredCards = filteredCards.filter(({ color }) => color.includes(c));
-    }
+      // Filter out objects with duplicate IDs
+      const uniqueFilteredObjects = filteredObjects.filter(
+        (obj, index, self) => index === self.findIndex((o) => o.id === obj.id)
+      );
 
-    return filteredCards;
+      return [...acc, ...uniqueFilteredObjects];
+    }, []);
   },
   category: (cards: OPCardList, t: QueryFilter['category']): OPCardList => {
     return cards.filter(({ category }) => category === t);
@@ -37,7 +41,7 @@ const filterMap = {
     return cards.filter(({ cost }) => cost === t);
   },
   type: (cards: OPCardList, t: QueryFilter['type']): OPCardList => {
-    return cards.filter(({ type }) => type.includes(t!));
+    return cards.filter(({ type }) => type.map((a) => a.toLowerCase()).includes(t!.toLowerCase()));
   },
   name: (cards: OPCardList, t: QueryFilter['name']): OPCardList => {
     let filteredCards = cards.slice(); // Make a shallow copy to avoid modifying the original array
