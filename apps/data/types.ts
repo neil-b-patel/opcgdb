@@ -10,8 +10,9 @@ export type OPSetList = OPSet[];
 
 export type OPSetMap = Record<OPLang, OPSetList>;
 
-export type OPCardRarity = 'C' | 'UC' | 'R' | 'SR' | 'L';
-export type OPCardColor = 'red' | 'blue' | 'yellow' | 'green' | 'black' | 'white';
+export type OPCardRarity = 'C' | 'UC' | 'R' | 'SR' | 'SP' | 'L';
+export type OPCardColor = 'Red' | 'Blue' | 'Yellow' | 'Green' | 'Black' | 'Purple';
+export type OPCardCategory = 'CHARACTER' | 'LEADER' | 'EVENT' | 'STAGE';
 
 export type OPCard = {
   // Required data

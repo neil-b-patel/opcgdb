@@ -1,7 +1,10 @@
 <script setup lang="ts">
-  import { cards } from '@opcgdb/data';
+  import { useSeoMeta } from '#imports';
 
-  const cardList = cards['en'];
+  import SearchForm from '~/components/SearchForm.vue';
+  import { useDb } from '~/composables/useDb';
+
+  useDb();
 
   useSeoMeta({
     title: 'Home | opcgdb',
@@ -9,9 +12,8 @@
 </script>
 
 <template>
-  <ul>
-    <li v-for="card in cardList" :key="card.id">
-      <nuxt-link :to="`/card/${card.id}`">{{ card.name }}</nuxt-link>
-    </li>
-  </ul>
+  <div id="home">
+    <h1>One Piece Card Game Database Search</h1>
+    <SearchForm />
+  </div>
 </template>
