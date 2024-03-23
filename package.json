@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "api:build": "nx run @opcgdb/api:build --output-style=stream",
+    "api:watch": "nx run @opcgdb/api:watch --output-style=stream",
     "build": "nx run-many --target=build --output-style=stream --parallel=1 --maxParallel=1",
     "cdn:build": "nx run @opcgdb/cdn:build --skip-nx-cache --output-style=stream",
     "client:dev": "nx run @opcgdb/client:dev --output-style=stream",

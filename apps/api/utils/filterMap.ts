@@ -13,7 +13,13 @@ const filterMap = {
     return cards.filter(({ rarity }) => rarity === t);
   },
   color: (cards: OPCardList, t: QueryFilter['color']): OPCardList => {
-    return cards.filter(({ color }) => color.includes(t!));
+    let filteredCards = cards.slice(); // Make a shallow copy to avoid modifying the original array
+
+    for (const c of t!.split(',')) {
+      filteredCards = filteredCards.filter(({ color }) => color.includes(c));
+    }
+
+    return filteredCards;
   },
   category: (cards: OPCardList, t: QueryFilter['category']): OPCardList => {
     return cards.filter(({ category }) => category === t);
@@ -34,7 +40,15 @@ const filterMap = {
     return cards.filter(({ type }) => type.includes(t!));
   },
   name: (cards: OPCardList, t: QueryFilter['name']): OPCardList => {
-    return cards.filter(({ name }) => name.includes(t!));
+    let filteredCards = cards.slice(); // Make a shallow copy to avoid modifying the original array
+
+    for (const n of t!.split(',')) {
+      filteredCards = filteredCards.filter(({ name }) =>
+        name.toLowerCase().includes(n.toLowerCase())
+      );
+    }
+
+    return filteredCards;
   },
   counter: (cards: OPCardList, t: QueryFilter['counter']): OPCardList => {
     return cards.filter(({ counter }) => t === !!counter);

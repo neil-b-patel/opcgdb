@@ -18,7 +18,7 @@ export const useDb = () => {
     return getCardsByNumber(number, cards[lang]);
   };
 
-  const _getCardsByFilter = (filters: Record<string, string[]>, lang: OPLang) => {
+  const _getCardsByFilter = (filters: Record<string, string | boolean>, lang: OPLang) => {
     return getCardsByFilter(filters, cards[lang]);
   };
 

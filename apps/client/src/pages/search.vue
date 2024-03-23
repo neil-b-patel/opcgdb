@@ -2,15 +2,18 @@
   import { useRoute } from '#app';
   import { onMounted, watch } from 'vue';
 
+  import { useDb } from '~/composables/useDb';
   import { getFilterMap } from '~/utils/getFilterMap';
   import { parseSearchQuery } from '~/utils/parseSearchQuery';
 
   const route = useRoute();
+  const { getCardsByFilter } = useDb();
 
   const searchCards = (query: string) => {
     const queryMap = parseSearchQuery(query);
     const filterMap = getFilterMap(queryMap);
-    console.log(filterMap);
+    const cards = getCardsByFilter(filterMap, 'en');
+    console.log(cards);
   };
 
   onMounted(() => {
@@ -26,4 +29,3 @@
 </script>
 
 <template>search</template>
-import type { getFilterMap } from '~/utils/getFilterMap';

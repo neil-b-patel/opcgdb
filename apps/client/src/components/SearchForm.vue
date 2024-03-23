@@ -1,14 +1,23 @@
 <script lang="ts" setup>
-  import { useRouter } from '#app';
-  import { ref } from 'vue';
+  import { useRoute, useRouter } from '#app';
+  import { ref, watch } from 'vue';
 
   const search = ref('');
   const router = useRouter();
+  const route = useRoute();
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: Event) => {
+    event.preventDefault();
     if (!search.value) return;
     router.push({ path: '/search', query: { q: search.value } });
   };
+
+  watch(
+    () => route.path,
+    (path: string) => {
+      if (path !== '/search') search.value = '';
+    }
+  );
 </script>
 
 <template>

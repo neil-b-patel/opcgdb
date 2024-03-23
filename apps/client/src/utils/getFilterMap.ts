@@ -16,7 +16,10 @@ export const getFilterMap = (queryMap: ValidatedQueryMap) => {
           acc.color = colorMap[value];
         } else {
           // if it's not a single color we assume it's a multicolor code
-          acc.color = value.split('').map((color) => colorMap[color]);
+          acc.color = value
+            .split('')
+            .map((color) => colorMap[color])
+            .join(',');
         }
 
         break;

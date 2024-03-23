@@ -1,10 +1,6 @@
+import { ValidSearchFilterSchema } from '../types';
 import { filterNameMap } from './filterMaps';
-import type {
-  QueryFilterKey,
-  QueryParams,
-  ValidatedQueryMap,
-  ValidSearchFilterSchema,
-} from '~/types';
+import type { QueryFilterKey, QueryParams, ValidatedQueryMap } from '~/types';
 
 export const buildFilterMap = (_filters: ValidatedQueryMap) => {
   const filters = _filters.valid;
@@ -71,7 +67,6 @@ const tokenizeString = (inputStr: string): string[] => {
 export const parseSearchQuery = (query: string) => {
   const lcParams = query.toLowerCase();
   const params = tokenizeString(lcParams);
-  console.log(params);
   return buildFilterMap(
     validateQueryParams(
       params.reduce((acc: QueryParams, param) => {

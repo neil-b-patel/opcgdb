@@ -7,7 +7,10 @@ export const QueryFilterSchema = z.object({
   number: z.string().optional(),
   set: z.string().optional(),
   rarity: z.enum(['C', 'UC', 'R', 'SR', 'SP', 'L']).optional(),
-  color: z.enum(['Red', 'Yellow', 'Purple', 'Blue', 'Green', 'Black']).optional(),
+  color: z
+    .string()
+    .regex(/^(?:(?!.*\b(\w+)\b.*\b\1\b)(?:Red|Yellow|Purple|Blue|Green|Black)(?:,(?!$))?)+$/)
+    .optional(),
   category: z.enum(['CHARACTER', 'LEADER', 'EVENT', 'STAGE']).optional(),
   life: z.string().optional(),
   attribute: z.string().optional(),
