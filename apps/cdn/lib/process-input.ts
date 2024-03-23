@@ -21,8 +21,9 @@ export const processInput = async (
       if (fs.existsSync(file.output) && !opts.force) {
         skipped++;
         console.info(
-          `⚙️ ${count}/${input.length}:`,
-          `[ SKIPPED ]`,
+          '⚙️',
+          `(${count}/${input.length})`,
+          '[ SKIPPED ]',
           `${basename(file.input)} >`,
           `${relative(opts.outputDir, file.output)}`
         );
@@ -31,15 +32,16 @@ export const processInput = async (
           await handler(file);
           compressed++;
           console.info(
-            `📦 ${count}/${input.length}:`,
-            `[ DONE ]`,
+            '📦',
+            `(${count}/${input.length})`,
+            '[ DONE ]',
             `${basename(file.input)} >`,
             `${relative(opts.outputDir, file.output)}`
           );
         } catch (err) {
           errors++;
           eFiles.push(file.input);
-          console.error(`❌ [ ERROR ]`, JSON.stringify(err));
+          console.error('❌', '[ ERROR ]', JSON.stringify(err));
         }
       }
     }

@@ -23,10 +23,10 @@ const downloadImage = async (url: string, directory: string, meta: ImagesMeta, r
   // Check if the file already exists
   if (fs.existsSync(filePath)) {
     console.info(
-      `⚙️`,
+      '⚙️',
       `(${meta.current}/${meta.total})`,
-      `[ SKIPPED ]`,
-      `${fileName} → ./${path.relative(cwd, filePath)}`
+      '[ SKIPPED ]',
+      `${fileName} → ${path.relative(cwd, filePath)}`
     );
     filesSkipped.push(fileName);
     return Promise.resolve();
@@ -43,7 +43,7 @@ const downloadImage = async (url: string, directory: string, meta: ImagesMeta, r
             '📦',
             `(${meta.current}/${meta.total})`,
             '[ DONE ]',
-            `${fileName} → ./${path.relative(cwd, filePath)}`
+            `${fileName} → ${path.relative(cwd, filePath)}`
           );
           resolve();
         });
@@ -87,7 +87,7 @@ const run = async (lang: OPLang) => {
     await downloadImages(imageList, outDir);
   }
 
-  console.info('✅ [ DONE ]', 'Images downloaded', `(${lang})`);
+  console.info('✅', '[ DONE ]', 'Images downloaded', `(${lang})`);
 };
 
 export default run;

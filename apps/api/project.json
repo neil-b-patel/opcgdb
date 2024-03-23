@@ -9,14 +9,14 @@
       "dependsOn": ["scrape"],
       "options": {
         "cwd": "apps/api",
-        "commands": ["rm -rf dist", "tsc -p tsconfig.lib.json"]
+        "commands": ["rimraf dist", "tsc -p tsconfig.lib.json"]
       }
     },
     "watch": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/api",
-        "commands": ["rm -rf dist", "tsc -p tsconfig.lib.json"]
+        "commands": ["rimraf dist", "tsc -p tsconfig.lib.json"]
       }
     }
   }

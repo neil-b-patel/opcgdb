@@ -16,14 +16,14 @@
       "dependsOn": ["scrape"],
       "options": {
         "cwd": "apps/data",
-        "commands": ["rm -rf dist", "tsc"]
+        "commands": ["rimraf dist", "tsc"]
       }
     },
     "watch": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/data",
-        "commands": ["rm -rf dist", "tsc -w"]
+        "commands": ["rimraf dist", "tsc -w"]
       }
     }
   }
