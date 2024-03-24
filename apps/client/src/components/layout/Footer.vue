@@ -1,5 +1,5 @@
 <script setup>
-  import FooterColumn from '~/components/FooterColumn.vue';
+  import FooterColumn from '~/components/layout/FooterColumn.vue';
 </script>
 
 <template>
