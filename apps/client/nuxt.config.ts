@@ -8,6 +8,7 @@ const config: NuxtConfig = defineNuxtConfig({
   components: false,
   modules: [
     'nuxt-simple-robots',
+    'nuxt-icon',
     ['@nuxt/image', { domains: ['cdn.opcgdb.com'] }],
     ['@nuxtjs/google-fonts', { families: { Lato: [300, 400, 500, 600, 700] } }],
   ],

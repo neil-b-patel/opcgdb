@@ -2,12 +2,19 @@
 
 :root {
   /* color definitions */
+  --darker-blue: #1d1c25;
   --dark-blue: #181e33;
   --deep-blue: #171f40;
   --main-blue: #1e2a5a;
   --gold: #b8961b;
   --white: #f8fbf6;
   --black: #16161d;
+  --main-gradient: linear-gradient(
+    180deg,
+    var(--darker-blue) 0%,
+    var(--deep-blue) 30%,
+    var(--main-blue) 100%
+  );
 
   /* spacing */
   --spacing-xxs: var(--size-1);
@@ -26,6 +33,8 @@
   /* theme */
   --font-color: var(--black);
   --bg-color: var(--white);
+
+  --nav-link: var(--gray-5);
 
   --footer-bg: var(--gray-10);
   --footer-color: var(--gray-6);

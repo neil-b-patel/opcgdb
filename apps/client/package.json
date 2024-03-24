@@ -24,6 +24,7 @@
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
     "eslint-plugin-vue": "^9.23.0",
+    "nuxt-icon": "^0.6.10",
     "nuxt-simple-robots": "4.0.0-rc.14",
     "postcss-custom-media": "^10.0.4",
     "postcss-nested": "^6.0.1",

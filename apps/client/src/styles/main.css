@@ -16,12 +16,18 @@ body {
 
 #main {
   font-size: var(--font-size-body);
+  min-height: 70vh;
 }
 
 .inner-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0;
+}
+
+.main-gradient-bg {
+  background: var(--deep-blue);
+  background: var(--main-gradient);
 }
 
 .sr-only {

@@ -7,6 +7,7 @@
   });
 
   const search = ref('');
+  const searchBox = ref<HTMLInputElement | null>(null);
   const router = useRouter();
   const route = useRoute();
 
@@ -14,6 +15,12 @@
     event.preventDefault();
     if (!search.value) return;
     router.push({ path: '/search', query: { q: search.value } });
+  };
+
+  const focusBox = () => {
+    if (searchBox.value) {
+      searchBox.value.focus();
+    }
   };
 
   watch(
@@ -35,9 +42,17 @@
         alt="One Piece Card Game Database"
       />
     </NuxtLink>
+    <Icon
+      name="octicon:search-16"
+      class="icon"
+      v-if="type === 'nav'"
+      @click="focusBox"
+      role="decoration"
+    />
     <label for="search" class="sr-only">Search for a card</label>
     <input
       :class="['search-form__input', props.type]"
+      ref="searchBox"
       type="text"
       v-model="search"
       name="search"
@@ -67,11 +82,10 @@
         left: calc(var(--spacing-md) + 0.5rem);
         top: 0.5rem;
       }
-    }
 
-    &__input {
-      box-sizing: border-box;
-      &.hp {
+      input {
+        box-sizing: border-box;
+
         line-height: 1.25;
         border: 1px solid var(--white);
         padding: 12px 14px 12px 62px;
@@ -87,6 +101,43 @@
         &:focus {
           border-color: var(--gold);
           background: var(--main-blue);
+        }
+      }
+    }
+
+    &.nav {
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      .logo {
+        position: relative;
+        top: 2px;
+      }
+
+      .icon {
+        color: var(--white);
+        opacity: 0.8;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: var(--spacing-xs);
+      }
+
+      input {
+        box-sizing: border-box;
+        padding: var(--spacing-xxs) var(--spacing-sm);
+        height: 52px;
+        line-height: 22px;
+        background: none;
+        border: 0;
+        color: var(--white);
+        font-size: var(--font-size-body);
+        width: 100%;
+
+        &:focus,
+        &:active {
+          border: 0;
+          outline: 0;
         }
       }
     }

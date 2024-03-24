@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <section class="home">
+  <section class="home main-gradient-bg">
     <div class="inner-wrapper">
       <h1><span>OPCGDB</span> is a powerful <span>One Piece Card Game</span> search</h1>
       <SearchForm type="hp" />
@@ -24,15 +24,9 @@
 </template>
 
 <style scoped>
+  @import '~/styles/variables.css';
   .home {
     color: var(--white);
-    background: rgb(29, 28, 37);
-    background: linear-gradient(
-      180deg,
-      rgba(29, 28, 37, 1) 0%,
-      rgba(23, 31, 64, 1) 30%,
-      rgba(30, 42, 90, 1) 100%
-    );
     height: 100vh;
 
     .inner-wrapper {
