@@ -1,8 +1,10 @@
 <script setup lang="ts">
-  import { useSeoMeta } from '#imports';
+  import { useRuntimeConfig, useSeoMeta } from '#imports';
 
   import SearchForm from '~/components/SearchForm.vue';
   import { useRandomCards } from '~/composables/useRandomCards';
+
+  const config = useRuntimeConfig();
 
   const bottomCards = useRandomCards(7);
 
@@ -28,7 +30,7 @@
             <div v-for="(card, idx) in bottomCards" :class="['card', `card--${idx}`]">
               <NuxtLink class="card" :to="`/`">
                 <img
-                  :src="`https://cdn.opcgdb.com/cardlist/en/${card.id}.webp`"
+                  :src="`${config.public.cdn_url}/cardlist/en/${card.id}.webp`"
                   :alt="card.name"
                   width="168"
                 />

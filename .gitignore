@@ -21,6 +21,7 @@ cdk.context.json
 
 # local env files
 .env*.local
+.env
 
 # build files
 dist

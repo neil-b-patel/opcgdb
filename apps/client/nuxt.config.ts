@@ -21,7 +21,8 @@ const config: NuxtConfig = defineNuxtConfig({
   build: {},
   runtimeConfig: {
     public: {
-      SST_STAGE: process.env.SST_STAGE || 'local',
+      sst_stage: process.env.SST_STAGE || 'local',
+      cdn_url: process.env.CDN_URL || 'http://localhost:3000',
     },
   },
   ssr: true,
