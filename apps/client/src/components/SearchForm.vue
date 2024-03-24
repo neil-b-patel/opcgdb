@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { useRoute, useRouter } from '#app';
+  import { useRoute, useRouter } from '#imports';
   import { ref, watch } from 'vue';
 
   const props = withDefaults(defineProps<{ type: 'hp' | 'nav' }>(), {

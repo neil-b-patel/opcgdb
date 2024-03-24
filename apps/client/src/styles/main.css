@@ -30,6 +30,24 @@ body {
   background: var(--main-gradient);
 }
 
+.cta {
+  color: var(--main-blue);
+  background: var(--white-blue);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: fit-content;
+  cursor: pointer;
+  height: 1.75rem;
+  border: 1px solid var(--main-blue);
+  border-radius: 3px;
+  transition: background 0.3s var(--ease-3);
+
+  &:hover {
+    background: var(--white);
+  }
+}
+
 .sr-only {
   position: absolute;
   left: -10000px;

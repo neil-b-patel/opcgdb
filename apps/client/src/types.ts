@@ -53,3 +53,7 @@ export type ValidatedQueryMap = {
   valid: Partial<ValidQueryParams>;
   invalid: QueryParams;
 };
+
+export type SearchResultsView = 'images' | 'list' | 'text-only';
+export type SearchResultsSort = 'name' | 'set' | 'category' | 'rarity' | 'cost' | 'power';
+export type SearchResultsOrder = 'asc' | 'desc';

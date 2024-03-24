@@ -6,8 +6,11 @@
   --dark-blue: #181e33;
   --deep-blue: #171f40;
   --main-blue: #1e2a5a;
+  --light-blue: var(--blue-0);
+  --white-blue: #f5fbff;
   --gold: #b8961b;
   --white: #f8fbf6;
+  --light-gray: #f3f5f8;
   --black: #16161d;
   --main-gradient: linear-gradient(
     180deg,
