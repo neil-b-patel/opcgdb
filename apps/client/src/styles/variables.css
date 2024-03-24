@@ -1,0 +1,34 @@
+@import 'open-props/postcss/style';
+
+:root {
+  /* color definitions */
+  --dark-blue: #181e33;
+  --deep-blue: #171f40;
+  --main-blue: #1e2a5a;
+  --gold: #b8961b;
+  --white: #f8fbf6;
+  --black: #16161d;
+
+  /* spacing */
+  --spacing-xxs: var(--size-1);
+  --spacing-xs: var(--size-2);
+  --spacing-sm: var(--size-3);
+  --spacing-md: var(--size-5);
+  --spacing-lg: var(--size-7);
+  --spacing-xl: var(--size-9);
+
+  /* typography */
+  --font-size-caption: clamp(0.75rem, 0.75vw, 1rem);
+  --font-size-body: clamp(--font-size-fluid-0);
+  --font-size-head: var(--font-size-fluid-2);
+  --font-size-subhead: var(--font-size-fluid-1);
+
+  /* theme */
+  --font-color: var(--black);
+  --bg-color: var(--white);
+
+  --footer-bg: var(--gray-10);
+  --footer-color: var(--gray-6);
+  --footer-link: var(--gray-5);
+  --footer-footnote: var(--gray-7);
+}

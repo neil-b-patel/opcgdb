@@ -26,7 +26,9 @@ module.exports = {
         },
         'import/resolver': {
           node: true,
-          typescript: true,
+          typescript: {
+            project: './',
+          },
           vue: true,
         },
         'import/extensions': ['error', 'ignorePackages', { vue: 'always' }],

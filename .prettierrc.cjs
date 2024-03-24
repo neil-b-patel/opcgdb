@@ -21,7 +21,9 @@ module.exports = {
     // Local imports
     '^.[.]{0,1}/(?!.*.(scss|css|sass)$).*$',
 
-    // Stlyes
-    '.(scss|sass|css)$',
+    // Styles
+
+    '^(?!.*main.css$).*.(scss|sass|css)$',
+    './styles/main.css',
   ],
 };

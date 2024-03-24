@@ -6,7 +6,12 @@ const PRERENDER_ROUTES: string[] = [];
 const config: NuxtConfig = defineNuxtConfig({
   srcDir: 'src',
   components: false,
-  modules: ['nuxt-simple-robots'],
+  modules: [
+    'nuxt-simple-robots',
+    ['@nuxt/image', { domains: ['cdn.opcgdb.com'] }],
+    ['@nuxtjs/google-fonts', { families: { Lato: [300, 400, 500, 600, 700] } }],
+  ],
+
   app: {
     head: {
       charset: 'utf-8',

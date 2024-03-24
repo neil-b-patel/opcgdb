@@ -1,12 +1,8 @@
 <script setup lang="ts">
   import Footer from '~/components/Footer.vue';
-  import Nav from '~/components/Nav.vue';
 </script>
 
 <template>
-  <header>
-    <Nav />
-  </header>
   <main id="main">
     <slot />
   </main>
