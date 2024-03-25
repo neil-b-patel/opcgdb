@@ -2,8 +2,14 @@ import type { ApiQueryFilter, ApiResponse, OPCardList } from '@opcgdb/types';
 import { ApiQueryFilterSchema } from '@opcgdb/types';
 
 import filterMap from '../utils/filterMap.js';
+import paginate from '../utils/paginate.js';
 
-const getCardsByFilters = (_filters: ApiQueryFilter, cards: OPCardList): ApiResponse => {
+const getCardsByFilters = (
+  _filters: ApiQueryFilter,
+  cards: OPCardList,
+  pageSize: number,
+  pageNumber: number
+): ApiResponse => {
   try {
     // Validate filters, if it fails, it will throw an error to be caught by the caller
     const filters = ApiQueryFilterSchema.parse(_filters);
@@ -21,9 +27,17 @@ const getCardsByFilters = (_filters: ApiQueryFilter, cards: OPCardList): ApiResp
         return filterFn(acc, currFilter);
       }, cards);
 
+    const totalCards = cardList.length;
+    const { currentPage, totalPages, items } = paginate(cardList, pageSize, pageNumber);
+
     return {
       status: 200,
-      data: cardList || [],
+      data: {
+        totalCards,
+        currentPage,
+        totalPages,
+        cards: items || [],
+      },
     };
   } catch (error) {
     console.error(error);

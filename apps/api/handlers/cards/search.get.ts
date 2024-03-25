@@ -14,6 +14,8 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     }
     const {
       lang = 'en',
+      pageSize = 20,
+      pageNumber = 1,
       number,
       set,
       rarity,
@@ -44,7 +46,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       counter: counter === '1',
       trigger: trigger === '1',
     };
-    const qres = query(filters, cards[lang]);
+    const qres = query(filters, cards[lang], pageSize, pageNumber);
     return {
       statusCode: qres.status,
       body: JSON.stringify({ ...qres }),

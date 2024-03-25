@@ -8,11 +8,15 @@ import query from '../../queries/getCardsByNumber.js';
 export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   try {
     const { number } = ApiCardsByNumberQuerySchema.parse(event.pathParameters);
-    const { lang = 'en' } = ApiCardsByNumberParamsSchema.parse(event.queryStringParameters || {});
+    const {
+      lang = 'en',
+      pageSize = 20,
+      pageNumber = 1,
+    } = ApiCardsByNumberParamsSchema.parse(event.queryStringParameters || {});
     if (!number) {
       throw new Error('Number is required');
     }
-    const qres = query(number, cards[lang]);
+    const qres = query(number, cards[lang], pageSize, pageNumber);
     return {
       statusCode: qres.status,
       body: JSON.stringify({ ...qres }),

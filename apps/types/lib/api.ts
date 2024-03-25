@@ -65,6 +65,8 @@ export type ApiCardsByIdQuery = z.infer<typeof ApiCardsByIdQuerySchema>;
 export const ApiCardsByNumberParamsSchema = z
   .object({
     lang: OPLangSchema,
+    pageSize: z.number(),
+    pageNumber: z.number(),
   })
   .partial();
 export type ApiCardsByNumberParams = z.infer<typeof ApiCardsByNumberParamsSchema>;
@@ -82,6 +84,8 @@ export const ApiSearchCardQuerySchema = z
     trigger: z.enum(['0', '1']),
     counter: z.enum(['0', '1']),
     lang: OPLangSchema,
+    pageSize: z.number(),
+    pageNumber: z.number(),
   })
   .partial();
 export type ApiSearchCardQuery = z.infer<typeof ApiSearchCardQuerySchema>;
