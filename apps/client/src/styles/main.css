@@ -17,6 +17,10 @@ body {
 #main {
   font-size: var(--font-size-body);
   min-height: 70vh;
+
+  section {
+    padding: 0 var(--spacing-md);
+  }
 }
 
 .inner-wrapper {

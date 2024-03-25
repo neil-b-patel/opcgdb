@@ -19,7 +19,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
+    margin: var(--spacing-lg) auto;
     width: 100%;
   }
 </style>

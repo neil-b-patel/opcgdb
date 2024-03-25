@@ -36,13 +36,53 @@
 </template>
 
 <style scoped>
-  a {
-    cursor: pointer;
+  .card {
+    aspect-ratio: 5/7;
     display: block;
-  }
-  img {
-    box-shadow: var(--shadow-4);
-    width: 100%;
-    border-radius: 14px;
+    margin: 0;
+    line-height: 0;
+    border-radius: 16px;
+    position: relative;
+    background-color: #dddbdd;
+    overflow: hidden;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      animation: shimmer 4s infinite;
+      content: '';
+      pointer-events: none;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    img {
+      box-shadow: var(--shadow-4);
+      width: 100%;
+      border-radius: 14px;
+      vertical-align: middle;
+      aspect-ratio: 5/7;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes shimmer {
+      100% {
+        transform: translateX(100%);
+      }
+    }
   }
 </style>
