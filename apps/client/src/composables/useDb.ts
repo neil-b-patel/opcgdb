@@ -1,5 +1,5 @@
 import { getCardById, getCardsByFilter, getCardsByNumber, getSetById } from '@opcgdb/api/queries';
-import type { OPCGDB, OPLang } from '@opcgdb/data';
+import type { OPCGDB, OPLang } from '@opcgdb/types';
 
 export const useDb = () => {
   const db: OPCGDB = inject('opcgdb')!;

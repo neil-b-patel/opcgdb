@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
+    "@opcgdb/types": "workspace:^",
     "eslint-plugin-vue": "^9.23.0",
     "nuxt-icon": "^0.6.10",
     "nuxt-simple-robots": "4.0.0-rc.14",

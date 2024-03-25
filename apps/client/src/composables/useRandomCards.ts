@@ -1,6 +1,6 @@
-import type { OPLang } from '@opcgdb/data';
+import type { OPLang } from '@opcgdb/types';
 
-import { useDb } from '../composables/useDb';
+import { useDb } from './useDb';
 
 export const useRandomCards = (n = 1, lang: OPLang = 'en') => {
   const { cards } = useDb();

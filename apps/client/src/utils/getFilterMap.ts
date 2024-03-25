@@ -1,12 +1,10 @@
-import type { QueryFilter } from '@opcgdb/api/queries';
+import type { ApiQueryFilter, FeValidatedQueryMap } from '@opcgdb/types';
 
-import type { ValidatedQueryMap } from '~/types';
-
-export const getFilterMap = (queryMap: ValidatedQueryMap) => {
+export const getFilterMap = (queryMap: FeValidatedQueryMap) => {
   const filters = queryMap.valid;
   const colorCodes = Object.keys(colorMap);
 
-  return Object.entries(filters).reduce((acc: QueryFilter, [filterKey, value]) => {
+  return Object.entries(filters).reduce((acc: ApiQueryFilter, [filterKey, value]) => {
     switch (filterKey) {
       case 'rarity':
         acc.rarity = rarityMap[value];

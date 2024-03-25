@@ -1,6 +1,4 @@
-import type { OPCardList } from '@opcgdb/data';
-
-import { type ApiResponse } from '../types.js';
+import type { ApiResponse, OPCardList } from '@opcgdb/types';
 
 const getCardById = (id: string, cards: OPCardList): ApiResponse => {
   const card = cards.find((card) => card.id === id);

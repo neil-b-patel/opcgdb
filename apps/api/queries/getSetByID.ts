@@ -1,6 +1,4 @@
-import type { OPSet, OPSetList } from '@opcgdb/data';
-
-import { type ApiResponse } from '../types.js';
+import type { ApiResponse, OPSet, OPSetList } from '@opcgdb/types';
 
 const getSetById = (id: string, sets: OPSetList): ApiResponse => {
   const set = sets.find((set: OPSet) => set.id === id);

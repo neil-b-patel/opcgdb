@@ -2,7 +2,7 @@ import fs from 'fs';
 import * as glob from 'glob';
 import path from 'path';
 
-import { CompressionOptions, ParsedInputFile } from '../types.js';
+import { CdnCompressionOptions, CdnParsedInputFile } from '@opcgdb/types';
 
 type IParseInputOpts = {
   format?: string; // custom / internal format
@@ -18,7 +18,7 @@ type IParseInputOpts = {
  */
 export const parseInput = (
   input: string,
-  inputOpts: CompressionOptions,
+  inputOpts: CdnCompressionOptions,
   opts: IParseInputOpts = {}
 ) => {
   const isGlob = input.includes('*'); // basic check for now.
@@ -63,6 +63,6 @@ export const parseInput = (
       extension: outExtension,
       format: opts.format || outExtension.replace('.', ''),
       sizing: null,
-    } satisfies ParsedInputFile;
+    } satisfies CdnParsedInputFile;
   });
 };

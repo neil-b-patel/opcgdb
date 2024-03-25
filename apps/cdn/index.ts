@@ -2,7 +2,8 @@ import fs from 'fs';
 import fse from 'fs-extra/esm';
 import path from 'path';
 
-import { cards, type OPLang, sets } from '@opcgdb/data';
+import { cards, sets } from '@opcgdb/data';
+import type { OPLang } from '@opcgdb/types';
 
 import compressImages from './lib/compress-images.js';
 import downloadImages from './lib/download-images.js';

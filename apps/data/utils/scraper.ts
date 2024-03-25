@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import { OPLang } from '../types.js';
+import { OPLang } from '@opcgdb/types';
+
 import getPageDOM from './getPageDOM.js';
 import getSeriesData from './getSeriesData.js';
 import writeSeriesFile from './writeSeriesFile.js';

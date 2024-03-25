@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import type { OPCard } from '@opcgdb/data';
+  import type { OPCard } from '@opcgdb/types';
 
   import CardImage from '~/components/CardImage.vue';
 

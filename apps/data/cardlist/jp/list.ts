@@ -1,4 +1,5 @@
-import type { OPCardList } from '../../types.js';
+import type { OPCardList } from '@opcgdb/types';
+
 import st01 from './556001.json';
 import st02 from './556002.json';
 import st03 from './556003.json';

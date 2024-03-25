@@ -2,7 +2,7 @@
   import { defineNuxtLink, useRuntimeConfig } from '#imports';
   import { computed } from 'vue';
 
-  import type { OPCard } from '@opcgdb/data';
+  import type { OPCard } from '@opcgdb/types';
 
   const config = useRuntimeConfig();
 

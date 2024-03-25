@@ -8,6 +8,7 @@
   "type": "module",
   "devDependencies": {
     "@opcgdb/data": "workspace:^",
+    "@opcgdb/types": "workspace:^",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.24",
     "fs-extra": "^11.2.0",

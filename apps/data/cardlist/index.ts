@@ -1,4 +1,5 @@
-import { OPCardMap } from '../types.js';
+import { OPCardMap } from '@opcgdb/types';
+
 import en from './en/list.js';
 import jp from './jp/list.js';
 

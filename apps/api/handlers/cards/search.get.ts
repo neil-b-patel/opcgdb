@@ -1,9 +1,9 @@
 import { APIGatewayProxyHandlerV2 } from 'aws-lambda';
 
 import { cards } from '@opcgdb/data';
+import { ApiSearchCardQuerySchema } from '@opcgdb/types';
 
 import query from '../../queries/getCardsByFilter.js';
-import { SearchCardQuerySchema } from '../../types.js';
 
 export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   try {
@@ -27,7 +27,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       name,
       counter,
       trigger,
-    } = SearchCardQuerySchema.parse(event.queryStringParameters);
+    } = ApiSearchCardQuerySchema.parse(event.queryStringParameters);
 
     const filters = {
       number,

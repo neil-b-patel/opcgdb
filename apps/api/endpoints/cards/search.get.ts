@@ -1,9 +1,9 @@
 import type { Request, Response } from 'express';
 
 import { cards } from '@opcgdb/data';
+import { ApiSearchCardQuerySchema } from '@opcgdb/types';
 
 import query from '../../queries/getCardsByFilter.js';
-import { SearchCardQuerySchema } from '../../types.js';
 
 const searchCardsByFilter = (req: Request, res: Response) => {
   try {
@@ -27,7 +27,7 @@ const searchCardsByFilter = (req: Request, res: Response) => {
       name,
       counter,
       trigger,
-    } = SearchCardQuerySchema.parse(req.query);
+    } = ApiSearchCardQuerySchema.parse(req.query);
 
     const filters = {
       number,

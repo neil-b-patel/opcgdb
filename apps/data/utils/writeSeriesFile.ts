@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import type { OPCardList, OPLang, OPSeriesCorrections } from '../types.js';
+import type { OPCardList, OPLang, OPSeriesCorrections } from '@opcgdb/types';
 
 const corrections: OPSeriesCorrections = {
   // [\u3040-\u30FF\uFF65-\uFF9F\u4E00-\u9FAF] -> used to find Japanese characters

@@ -5,7 +5,7 @@ import https from 'https';
 import path from 'path';
 
 import { cards } from '@opcgdb/data';
-import type { OPCard, OPLang } from '@opcgdb/data';
+import type { OPCard, OPLang } from '@opcgdb/types';
 
 const cwd = process.cwd();
 const filesSkipped = [];

@@ -1,6 +1,4 @@
-import type { OPCard, OPCardList } from '@opcgdb/data';
-
-import { type ApiResponse } from '../types.js';
+import type { ApiResponse, OPCard, OPCardList } from '@opcgdb/types';
 
 const getCardsByNumber = (number: string, cards: OPCardList): ApiResponse => {
   const cardList = cards.filter((card: OPCard) => card.number === number);

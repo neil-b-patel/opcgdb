@@ -1,4 +1,5 @@
-import type { OPSetMap } from '../types.js';
+import type { OPSetMap } from '@opcgdb/types';
+
 import en from './en.js';
 import jp from './jp.js';
 

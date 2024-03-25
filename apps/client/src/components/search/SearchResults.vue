@@ -1,7 +1,12 @@
 <script lang="ts" setup>
   import { useRoute } from '#imports';
   import { onMounted, ref, watch } from 'vue';
-  import { z } from 'zod';
+
+  import {
+    FeSearchResultsOrderSchema,
+    FeSearchResultsSortSchema,
+    FeSearchResultsViewSchema,
+  } from '@opcgdb/types';
 
   import CardGrid from '~/components/search/CardGrid.vue';
   import ResultsDescription from '~/components/search/ResultsDescription.vue';
@@ -42,11 +47,9 @@
 
   const updateResults = () => {
     loading.value = true;
-    const v = z.enum(['images', 'list', 'text-only']).safeParse(route.query.view);
-    const s = z
-      .enum(['name', 'set', 'category', 'rarity', 'cost', 'power'])
-      .safeParse(route.query.sort);
-    const o = z.enum(['asc', 'desc']).safeParse(route.query.order);
+    const v = FeSearchResultsViewSchema.safeParse(route.query.view);
+    const s = FeSearchResultsSortSchema.safeParse(route.query.sort);
+    const o = FeSearchResultsOrderSchema.safeParse(route.query.order);
 
     if (v.success) {
       setView(v.data);

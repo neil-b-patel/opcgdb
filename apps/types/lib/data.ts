@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import { ZodRecordWithEnum } from '../utils/ZodRecordWithEnum.js';
+
 export const OPLangSchema = z.enum(['en', 'jp']);
 export type OPLang = z.infer<typeof OPLangSchema>;
 
@@ -13,7 +15,7 @@ export type OPSet = z.infer<typeof OPSetSchema>;
 export const OPSetListSchema = z.array(OPSetSchema);
 export type OPSetList = z.infer<typeof OPSetListSchema>;
 
-export const OPSetMapSchema = z.record(OPLangSchema, OPSetListSchema);
+export const OPSetMapSchema = ZodRecordWithEnum(OPLangSchema, OPSetListSchema);
 export type OPSetMap = z.infer<typeof OPSetMapSchema>;
 
 export const OPCardRaritySchema = z.enum(['C', 'UC', 'R', 'SR', 'SP', 'L']);
@@ -47,10 +49,10 @@ export type OPCard = z.infer<typeof OPCardSchema>;
 export const OPCardListSchema = z.array(OPCardSchema);
 export type OPCardList = z.infer<typeof OPCardListSchema>;
 
-export const OPCardMapSchema = z.record(OPLangSchema, OPCardListSchema);
+export const OPCardMapSchema = ZodRecordWithEnum(OPLangSchema, OPCardListSchema);
 export type OPCardMap = z.infer<typeof OPCardMapSchema>;
 
-export const OPSeriesCorrectionsSchema = z.record(
+export const OPSeriesCorrectionsSchema = ZodRecordWithEnum(
   OPLangSchema,
   z.array(
     z.object({

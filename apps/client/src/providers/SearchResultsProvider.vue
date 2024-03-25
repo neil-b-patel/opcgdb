@@ -1,27 +1,30 @@
 <script setup lang="ts">
   import { provide, ref } from 'vue';
 
-  import type { OPCardList } from '@opcgdb/data';
-
-  import type { SearchResultsOrder, SearchResultsSort, SearchResultsView } from '../types';
+  import type {
+    FeSearchResultsOrder,
+    FeSearchResultsSort,
+    FeSearchResultsView,
+    OPCardList,
+  } from '@opcgdb/types';
 
   const cards = ref<OPCardList>([]);
   const setCards = (newCards: OPCardList) => {
     cards.value = newCards;
   };
 
-  const view = ref<SearchResultsView>('images');
-  const setView = (v: SearchResultsView) => {
+  const view = ref<FeSearchResultsView>('images');
+  const setView = (v: FeSearchResultsView) => {
     view.value = v;
   };
 
-  const sort = ref<SearchResultsSort>('name');
-  const setSort = (s: SearchResultsSort) => {
+  const sort = ref<FeSearchResultsSort>('name');
+  const setSort = (s: FeSearchResultsSort) => {
     sort.value = s;
   };
 
-  const order = ref<SearchResultsOrder>('asc');
-  const setOrder = (o: SearchResultsOrder) => {
+  const order = ref<FeSearchResultsOrder>('asc');
+  const setOrder = (o: FeSearchResultsOrder) => {
     order.value = o;
   };
 

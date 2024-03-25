@@ -1,6 +1,6 @@
 import { CheerioAPI } from 'cheerio';
 
-import { OPCardList } from '../types.js';
+import { OPCardList } from '@opcgdb/types';
 
 const getSetNameAndID = (input: string) => {
   // Exception for JP - ST13 doesn't include set ID, only name

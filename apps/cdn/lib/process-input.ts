@@ -1,12 +1,12 @@
 import fs from 'fs';
 import { basename, relative } from 'path';
 
-import type { CompressionOptions, ParsedInputFile } from '../types.js';
+import type { CdnCompressionOptions, CdnParsedInputFile } from '@opcgdb/types';
 
 export const processInput = async (
-  input: ParsedInputFile[],
-  opts: CompressionOptions,
-  handler: (file: ParsedInputFile) => Promise<any>
+  input: CdnParsedInputFile[],
+  opts: CdnCompressionOptions,
+  handler: (file: CdnParsedInputFile) => Promise<any>
 ) => {
   console.info(`⚙️ Found ${input.length} files to compress`);
 

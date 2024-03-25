@@ -25,7 +25,7 @@ export const ApiQueryFilterSchema = z.object({
   counter: z.boolean().optional(),
   trigger: z.boolean().optional(),
 });
-export type QueryFilter = z.infer<typeof ApiQueryFilterSchema>;
+export type ApiQueryFilter = z.infer<typeof ApiQueryFilterSchema>;
 
 export const ApiResponseSchema = z.object({
   status: z.number(),

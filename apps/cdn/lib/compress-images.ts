@@ -2,11 +2,12 @@ import fse from 'fs-extra/esm';
 import { dirname } from 'path';
 import sharp from 'sharp';
 
-import type { CompressionFn } from '../types.js';
+import type { CdnCompressionFn } from '@opcgdb/types';
+
 import { parseInput } from './parse-input.js';
 import { processInput } from './process-input.js';
 
-const compressImages: CompressionFn = async (input, opts) => {
+const compressImages: CdnCompressionFn = async (input, opts) => {
   const tasks = Array.isArray(opts.format) ? opts.format : [opts.format];
 
   const files = tasks.flatMap((format) =>

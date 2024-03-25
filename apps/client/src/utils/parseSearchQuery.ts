@@ -1,16 +1,17 @@
-import { ValidSearchFilterSchema } from '../types';
-import { filterNameMap } from './filterMaps';
-import type { QueryFilterKey, QueryParams, ValidatedQueryMap } from '~/types';
+import { FeValidSearchFilterSchema } from '@opcgdb/types';
+import type { FeQueryFilterKey, FeQueryParams, FeValidatedQueryMap } from '@opcgdb/types';
 
-export const buildFilterMap = (_filters: ValidatedQueryMap) => {
+import { filterNameMap } from './filterMaps';
+
+export const buildFilterMap = (_filters: FeValidatedQueryMap) => {
   const filters = _filters.valid;
 
   return Object.entries(filters).reduce(
-    (acc: ValidatedQueryMap, [_key, value]) => {
+    (acc: FeValidatedQueryMap, [_key, value]) => {
       const validFiltersKeys = Object.keys(filterNameMap);
       if (validFiltersKeys.includes(_key)) {
         const key = _key as keyof typeof filterNameMap;
-        const filterKey: QueryFilterKey = filterNameMap[key];
+        const filterKey: FeQueryFilterKey = filterNameMap[key];
         acc.valid[filterKey] = value;
       }
       return acc;
@@ -19,11 +20,11 @@ export const buildFilterMap = (_filters: ValidatedQueryMap) => {
   );
 };
 
-export const validateQueryParams = (params: QueryParams): ValidatedQueryMap => {
+export const validateQueryParams = (params: FeQueryParams): FeValidatedQueryMap => {
   return Object.entries(params).reduce(
-    (acc: ValidatedQueryMap, [key, value]) => {
+    (acc: FeValidatedQueryMap, [key, value]) => {
       try {
-        const _key = ValidSearchFilterSchema.parse(key);
+        const _key = FeValidSearchFilterSchema.parse(key);
         acc.valid[_key] = value;
       } catch {
         acc.invalid[key] = value;
@@ -69,7 +70,7 @@ export const parseSearchQuery = (query: string) => {
   const params = tokenizeString(lcParams);
   return buildFilterMap(
     validateQueryParams(
-      params.reduce((acc: QueryParams, param) => {
+      params.reduce((acc: FeQueryParams, param) => {
         if (param.includes(':')) {
           const [key, value] = param.split(':');
           acc[key] = value;

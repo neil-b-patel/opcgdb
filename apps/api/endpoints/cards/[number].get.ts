@@ -1,14 +1,14 @@
 import type { Request, Response } from 'express';
 
 import { cards } from '@opcgdb/data';
+import { ApiCardsByNumberParamsSchema, ApiCardsByNumberQuerySchema } from '@opcgdb/types';
 
 import query from '../../queries/getCardsByNumber.js';
-import { CardsByNumberParamsSchema, CardsByNumberQuerySchema } from '../../types.js';
 
 const getCardsByNumber = (req: Request, res: Response) => {
   try {
-    const { number } = CardsByNumberQuerySchema.parse(req.params);
-    const { lang = 'en' } = CardsByNumberParamsSchema.parse(req.query);
+    const { number } = ApiCardsByNumberQuerySchema.parse(req.params);
+    const { lang = 'en' } = ApiCardsByNumberParamsSchema.parse(req.query);
     if (!number) {
       throw new Error('Number is required');
     }

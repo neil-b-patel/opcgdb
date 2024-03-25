@@ -1,18 +1,18 @@
-import type { OPCardList } from '@opcgdb/data';
+import type { ApiQueryFilter, ApiResponse, OPCardList } from '@opcgdb/types';
+import { ApiQueryFilterSchema } from '@opcgdb/types';
 
-import { type ApiResponse, type QueryFilter, QueryFilterSchema } from '../types.js';
 import filterMap from '../utils/filterMap.js';
 
-const getCardsByFilters = (_filters: QueryFilter, cards: OPCardList): ApiResponse => {
+const getCardsByFilters = (_filters: ApiQueryFilter, cards: OPCardList): ApiResponse => {
   try {
     // Validate filters, if it fails, it will throw an error to be caught by the caller
-    const filters = QueryFilterSchema.parse(_filters);
-    const filterKeys = Object.keys(filters) as (keyof QueryFilter)[];
+    const filters = ApiQueryFilterSchema.parse(_filters);
+    const filterKeys = Object.keys(filters) as (keyof ApiQueryFilter)[];
 
     // Apply all the filters passed to the card list
     const cardList = filterKeys
-      .filter((k: keyof QueryFilter) => !!filters[k]) // only check filters that have a value
-      .reduce((acc: OPCardList, filterType: keyof QueryFilter) => {
+      .filter((k: keyof ApiQueryFilter) => !!filters[k]) // only check filters that have a value
+      .reduce((acc: OPCardList, filterType: keyof ApiQueryFilter) => {
         const currFilter = filters[filterType];
         const filterFn = filterMap[filterType] as (
           c: OPCardList,

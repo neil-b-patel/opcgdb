@@ -1,8 +1,12 @@
-import type { OPCardCategory, OPCardColor, OPCardRarity } from '@opcgdb/data';
+import type {
+  FeQueryFilterKey,
+  FeValidSearchFilter,
+  OPCardCategory,
+  OPCardColor,
+  OPCardRarity,
+} from '@opcgdb/types';
 
-import type { QueryFilterKey, ValidSearchFilter } from '~/types';
-
-export const filterNameMap: Record<ValidSearchFilter, QueryFilterKey> = {
+export const filterNameMap: Record<FeValidSearchFilter, FeQueryFilterKey> = {
   num: 'number',
   number: 'number',
   s: 'set',
