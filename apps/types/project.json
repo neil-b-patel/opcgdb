@@ -15,7 +15,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/types",
-        "commands": ["rimraf dist", "tsc --watch"]
+        "commands": ["tsc --watch"]
       }
     }
   }

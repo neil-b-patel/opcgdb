@@ -16,7 +16,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/api",
-        "commands": ["rimraf dist", "tsc -p tsconfig.lib.json --watch"]
+        "commands": ["tsc -p tsconfig.lib.json --watch"]
       }
     }
   }
