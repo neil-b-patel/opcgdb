@@ -17,11 +17,26 @@
   import { parseSearchQuery } from '~/utils/parseSearchQuery';
 
   const { getCardsByFilter } = useDb();
-  const { cards, setCards, sort, order, view, setView, setOrder, setSort } = useSearchResults();
+  const {
+    cards,
+    setCards,
+    sort,
+    order,
+    view,
+    setView,
+    setOrder,
+    setSort,
+    currPage,
+    setCurrPage,
+    queryMap,
+    setQueryMap,
+    resetSearch,
+    setTotalCards,
+    setTotalPages,
+  } = useSearchResults();
 
   const route = useRoute();
   const loading = ref(true);
-  const queryMap = ref();
 
   const sortCards = () => {
     setCards(
@@ -46,7 +61,6 @@
   };
 
   const updateResults = () => {
-    loading.value = true;
     const v = FeSearchResultsViewSchema.safeParse(route.query.view);
     const s = FeSearchResultsSortSchema.safeParse(route.query.sort);
     const o = FeSearchResultsOrderSchema.safeParse(route.query.order);
@@ -69,21 +83,37 @@
 
   const searchCards = (query: string) => {
     loading.value = true;
-    queryMap.value = parseSearchQuery(query);
+    setQueryMap(parseSearchQuery(query));
     const filterMap = getFilterMap(queryMap.value);
-    const res = getCardsByFilter(filterMap, 'en');
-    setCards(res.data);
+    const res = getCardsByFilter(filterMap, 'en', currPage.value);
+    setTotalCards(res.data?.totalCards || 0);
+    setTotalPages(res.data?.totalPages || 0);
+    setCards(res.data?.cards || []);
     updateResults();
   };
 
-  onMounted(() => {
+  const updateCurrPage = () => {
+    if (route.query.p) {
+      setCurrPage(parseInt(route.query.p as string, 10));
+    } else {
+      setCurrPage(1);
+    }
+  };
+
+  const init = () => {
+    resetSearch();
+    updateCurrPage();
     searchCards(route.query.q as string);
+  };
+
+  onMounted(() => {
+    init();
   });
 
   watch(
     () => route.query,
     () => {
-      updateResults();
+      init();
     }
   );
 </script>

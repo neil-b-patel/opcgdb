@@ -23,7 +23,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/data",
-        "commands": ["rimraf dist", "tsc -w"]
+        "commands": ["tsc --watch"]
       }
     }
   }

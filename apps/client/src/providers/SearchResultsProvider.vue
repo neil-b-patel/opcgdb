@@ -28,6 +28,34 @@
     order.value = o;
   };
 
+  const currPage = ref(1);
+  const setCurrPage = (page: number) => {
+    currPage.value = page;
+  };
+
+  const queryMap = ref({});
+  const setQueryMap = (map: Record<string, string>) => {
+    queryMap.value = map;
+  };
+
+  const totalCards = ref(0);
+  const setTotalCards = (total: number) => {
+    totalCards.value = total;
+  };
+
+  const totalPages = ref(0);
+  const setTotalPages = (total: number) => {
+    totalPages.value = total;
+  };
+
+  const resetSearch = () => {
+    setCards([]);
+    setQueryMap({});
+    setTotalCards(0);
+    setTotalPages(0);
+    setCurrPage(1);
+  };
+
   provide('search-results', {
     cards,
     setCards,
@@ -40,6 +68,20 @@
 
     sort,
     setSort,
+
+    currPage,
+    setCurrPage,
+
+    queryMap,
+    setQueryMap,
+
+    totalCards,
+    setTotalCards,
+
+    totalPages,
+    setTotalPages,
+
+    resetSearch,
   });
 </script>
 

@@ -1,4 +1,4 @@
-import type { ApiResponse, OPCard, OPCardList } from '@opcgdb/types';
+import type { OPCard, OPCardList, PaginatedApiResponse, PaginatedCardData } from '@opcgdb/types';
 
 import paginate from '../utils/paginate.js';
 
@@ -7,17 +7,17 @@ const getCardsByNumber = (
   cards: OPCardList,
   pageSize: number,
   pageNumber: number
-): ApiResponse => {
+): PaginatedApiResponse<PaginatedCardData> => {
   const cardList = cards.filter((card: OPCard) => card.number === number);
   const totalCards = cardList.length;
-  const { currentPage, totalPages, items } = paginate(cardList, pageSize, pageNumber);
+  const { currentPage, totalPages, items = [] } = paginate(cardList, pageSize, pageNumber);
   return {
     status: 200,
     data: {
       totalCards,
       currentPage,
       totalPages,
-      cards: items || [],
+      cards: items satisfies OPCardList,
     },
   };
 };

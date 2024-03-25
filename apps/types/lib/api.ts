@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { z } from 'zod';
 
-import { OPLangSchema } from './data.js';
+import { OPCardListSchema, OPLangSchema } from './data.js';
 
 export const ApiQueryFilterSchema = z.object({
   // single option
@@ -26,6 +26,20 @@ export const ApiQueryFilterSchema = z.object({
   trigger: z.boolean().optional(),
 });
 export type ApiQueryFilter = z.infer<typeof ApiQueryFilterSchema>;
+
+export const PaginatedCardDataSchema = z.object({
+  totalCards: z.number(),
+  currentPage: z.number(),
+  totalPages: z.number(),
+  cards: OPCardListSchema,
+});
+export type PaginatedCardData = z.infer<typeof PaginatedCardDataSchema>;
+
+export type PaginatedApiResponse<T> = {
+  status: number;
+  data?: T;
+  error?: string;
+};
 
 export const ApiResponseSchema = z.object({
   status: z.number(),

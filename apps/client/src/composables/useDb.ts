@@ -14,12 +14,16 @@ export const useDb = () => {
     return getCardById(id, cards[lang]);
   };
 
-  const _getCardsByNumber = (number: string, lang: OPLang) => {
-    return getCardsByNumber(number, cards[lang]);
+  const _getCardsByNumber = (number: string, lang: OPLang, page: number) => {
+    return getCardsByNumber(number, cards[lang], 60, page);
   };
 
-  const _getCardsByFilter = (filters: Record<string, string | boolean>, lang: OPLang) => {
-    return getCardsByFilter(filters, cards[lang]);
+  const _getCardsByFilter = (
+    filters: Record<string, string | boolean>,
+    lang: OPLang,
+    page: number
+  ) => {
+    return getCardsByFilter(filters, cards[lang], 60, page);
   };
 
   return {

@@ -28,7 +28,8 @@
     "sst:dev": "sst dev --stage=local",
     "sst:remove": "sst remove",
     "types:build": "nx run @opcgdb/types:build --output-style=stream",
-    "types:watch": "nx run @opcgdb/types:watch --output-style=stream"
+    "types:watch": "nx run @opcgdb/types:watch --output-style=stream",
+    "watch": "nx run-many --parallel -t watch -t dev --projects=apps/* --maxParallel=100 --output-style=stream"
   },
   "lint-staged": {
     "apps/**/*.{js,ts}": "eslint --cache --fix",
