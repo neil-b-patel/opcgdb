@@ -18,8 +18,7 @@
     "nuxt": "^3.10.3",
     "open-props": "^1.6.21",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "zod": "^3.22.4"
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
