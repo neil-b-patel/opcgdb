@@ -1,0 +1,24 @@
+{
+  "name": "@opcgdb/types",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Types and Zod schemas used across the different projects",
+  "license": "ISC",
+  "author": "Marcos Mellado <marcos@mellado.dev>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "typescript": "^5.3.3"
+  }
+}

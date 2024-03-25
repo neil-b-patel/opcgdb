@@ -14,8 +14,10 @@
     "api:watch": "nx run @opcgdb/api:watch --output-style=stream",
     "build": "nx run-many --target=build --output-style=stream --parallel=1 --maxParallel=1",
     "cdn:build": "nx run @opcgdb/cdn:build --skip-nx-cache --output-style=stream",
+    "client:build": "nx run @opcgdb/client:build --output-style=stream",
     "client:dev": "nx run @opcgdb/client:dev --output-style=stream",
     "data:build": "nx run @opcgdb/data:build --skip-nx-cache --output-style=stream",
+    "data:watch": "nx run @opcgdb/data:watch --skip-nx-cache --output-style=stream",
     "format": "prettier apps/**/*.{ts,js,json} --write",
     "lint": "eslint apps/**/*.{ts,js,json}",
     "lint:fix": "eslint apps/**/*.{ts,js,json} --fix",
@@ -24,7 +26,9 @@
     "sst:console": "sst console",
     "sst:deploy": "sst deploy --stage=production",
     "sst:dev": "sst dev --stage=local",
-    "sst:remove": "sst remove"
+    "sst:remove": "sst remove",
+    "types:build": "nx run @opcgdb/types:build --output-style=stream",
+    "types:watch": "nx run @opcgdb/types:watch --output-style=stream"
   },
   "lint-staged": {
     "apps/**/*.{js,ts}": "eslint --cache --fix",
