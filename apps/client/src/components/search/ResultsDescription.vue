@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import { computed, watch } from 'vue';
+  import { computed } from 'vue';
 
   import Alert from '~/components/Alert.vue';
   import { useSearchResults } from '~/composables/useSearchResults';
+  import { getFilterDescription } from '~/utils/getFilterDescription';
 
   const { currPage, totalCards, totalPages, filterMap } = useSearchResults();
   const maxCardsPerPage = 60;
@@ -10,24 +11,18 @@
   const lastCardInPage = computed(() =>
     Math.min(currPage.value * maxCardsPerPage, totalCards.value)
   );
-  watch(
-    () => filterMap.value,
-    () => {
-      console.log('filterMap changed', filterMap.value);
-    }
-  );
 </script>
 
 <template>
   <Alert class="results-description">
     <p v-if="totalPages === 1">
-      <span class="strong">{{ totalCards }} cards</span>
+      <span class="strong">{{ totalCards }} cards</span> {{ getFilterDescription(filterMap) }}
     </p>
     <p v-if="totalPages > 1">
       <span class="strong">
         {{ firstCardInPage }} - {{ lastCardInPage }} of {{ totalCards }} cards
       </span>
-      other text here
+      {{ getFilterDescription(filterMap) }}
     </p>
   </Alert>
 </template>

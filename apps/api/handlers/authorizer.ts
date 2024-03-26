@@ -26,8 +26,6 @@ export const handler: APIGatewayRequestSimpleAuthorizerHandlerV2 = async (event)
     };
   }
 
-  console.log('apiKey', apiKey);
-
   const db = DynamoDBDocumentClient.from(new DynamoDBClient({}));
   const get = new GetCommand({
     TableName: Table.apikeys.tableName,

@@ -63,7 +63,6 @@
     const res = getCardsByFilter(filterMap.value, 'en', currPage.value, sort.value, order.value);
     setTotalCards(res.data?.totalCards || 0);
     setTotalPages(res.data?.totalPages || 0);
-    console.log(res.data?.cards || []);
     setCards(res.data?.cards || []);
     loading.value = false;
   };
