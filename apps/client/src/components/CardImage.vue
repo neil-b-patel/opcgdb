@@ -19,6 +19,10 @@
 
   const cardClasses = ['card', `card--${props.card.id}`];
   const Wrapper = computed(() => (props.isLink ? defineNuxtLink({}) : 'div'));
+  const cardUrl = computed(
+    () =>
+      `/card/${props.card.number.split('-').join('/')}/${props.card.name.toLowerCase().replace(/ /g, '-')}`
+  );
 
   if (props.class) {
     cardClasses.push(props.class);
@@ -26,7 +30,7 @@
 </script>
 
 <template>
-  <Wrapper v-bind="props.isLink ? { to: `/card/${props.card.id}` } : null" :class="cardClasses">
+  <Wrapper v-bind="props.isLink ? { to: cardUrl } : null" :class="cardClasses">
     <img
       :src="`${config.public.cdn_url}/cardlist/${props.lang}/${props.card.id}.webp`"
       :alt="props.card.name"
