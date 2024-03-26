@@ -2,17 +2,39 @@
 
 :root {
   /* color definitions */
+  /* blues */
   --darker-blue: #1d1c25;
   --dark-blue: #181e33;
   --deep-blue: #171f40;
   --main-blue: #1e2a5a;
   --light-blue: var(--blue-0);
   --white-blue: #f5fbff;
+
+  /* reds */
+  --white-red: var(--red-0);
+  --light-red: var(--red-1);
+  --main-red: var(--red-5);
+
+  /* greens */
+  --white-green: var(--green-0);
+  --light-green: var(--green-1);
+  --main-green: var(--green-5);
+
+  /* yellows */
+  --white-yellow: var(--yellow-0);
+  --light-yellow: var(--yellow-1);
+  --main-yellow: var(--orange-5);
+
+  /* accent colors */
   --gold: #b8961b;
+
+  /* primaries */
   --white: #f8fbf6;
   --light-gray: #f3f5f8;
   --gray: var(--gray-5);
   --black: #16161d;
+
+  /* gradients */
   --main-gradient: linear-gradient(
     180deg,
     var(--darker-blue) 0%,
@@ -35,6 +57,8 @@
   --font-size-subhead: var(--font-size-fluid-1);
 
   /* theme */
+  --site-font: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
   --font-color: var(--black);
   --bg-color: var(--white);
 
