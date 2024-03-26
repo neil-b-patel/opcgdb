@@ -12,13 +12,13 @@ const config: NuxtConfig = defineNuxtConfig({
     ['@nuxt/image', { domains: ['cdn.opcgdb.com'] }],
     ['@nuxtjs/google-fonts', { families: { Lato: [300, 400, 500, 600, 700] } }],
   ],
-
   app: {
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
     },
   },
+  css: ['open-props/postcss/style', '~/styles/main.css'],
   build: {},
   runtimeConfig: {
     public: {
