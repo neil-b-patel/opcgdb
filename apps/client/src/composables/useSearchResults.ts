@@ -1,12 +1,6 @@
 import { inject, type Ref } from 'vue';
 
-import type {
-  FeSearchResultsOrder,
-  FeSearchResultsSort,
-  FeSearchResultsView,
-  FeValidatedQueryMap,
-  OPCardList,
-} from '@opcgdb/types';
+import type { ApiOrder, ApiSort, FeSearchResultsView, OPCardList } from '@opcgdb/types';
 
 export const useSearchResults = () => {
   const {
@@ -20,8 +14,8 @@ export const useSearchResults = () => {
     setSort,
     currPage,
     setCurrPage,
-    queryMap,
-    setQueryMap,
+    filterMap,
+    setFilterMap,
     totalCards,
     setTotalCards,
     totalPages,
@@ -32,14 +26,14 @@ export const useSearchResults = () => {
     setCards: (c: OPCardList) => void;
     view: Ref<FeSearchResultsView>;
     setView: (v: FeSearchResultsView) => void;
-    order: Ref<FeSearchResultsOrder>;
-    setOrder: (o: FeSearchResultsOrder) => void;
-    sort: Ref<FeSearchResultsSort>;
-    setSort: (s: FeSearchResultsSort) => void;
+    order: Ref<ApiOrder>;
+    setOrder: (o: ApiOrder) => void;
+    sort: Ref<ApiSort>;
+    setSort: (s: ApiSort) => void;
     currPage: Ref<number>;
     setCurrPage: (p: number) => void;
-    queryMap: Ref<FeValidatedQueryMap>;
-    setQueryMap: (q: FeValidatedQueryMap) => void;
+    filterMap: Ref<Record<string, any>>;
+    setFilterMap: (q: Record<string, any>) => void;
     totalCards: Ref<number>;
     setTotalCards: (t: number) => void;
     totalPages: Ref<number>;
@@ -58,8 +52,8 @@ export const useSearchResults = () => {
     setSort,
     currPage,
     setCurrPage,
-    queryMap,
-    setQueryMap,
+    filterMap,
+    setFilterMap,
     totalCards,
     setTotalCards,
     totalPages,

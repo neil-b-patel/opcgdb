@@ -109,3 +109,9 @@ export type RouteMap = {
   path: string;
   handler: (req: Request, res: Response) => void;
 }[];
+
+export const ApiSortSchema = z.enum(['name', 'set', 'category', 'rarity', 'cost', 'power']);
+export type ApiSort = z.infer<typeof ApiSortSchema>;
+
+export const ApiOrderSchema = z.enum(['asc', 'desc']);
+export type ApiOrder = z.infer<typeof ApiOrderSchema>;

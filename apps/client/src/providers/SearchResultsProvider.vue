@@ -33,9 +33,9 @@
     currPage.value = page;
   };
 
-  const queryMap = ref({});
-  const setQueryMap = (map: Record<string, string>) => {
-    queryMap.value = map;
+  const filterMap = ref({});
+  const setFilterMap = (map: Record<string, any>) => {
+    filterMap.value = map;
   };
 
   const totalCards = ref(0);
@@ -50,7 +50,7 @@
 
   const resetSearch = () => {
     setCards([]);
-    setQueryMap({});
+    setFilterMap({});
     setTotalCards(0);
     setTotalPages(0);
     setCurrPage(1);
@@ -72,8 +72,8 @@
     currPage,
     setCurrPage,
 
-    queryMap,
-    setQueryMap,
+    filterMap,
+    setFilterMap,
 
     totalCards,
     setTotalCards,

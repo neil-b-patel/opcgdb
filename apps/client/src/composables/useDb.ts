@@ -1,5 +1,5 @@
 import { getCardById, getCardsByFilter, getCardsByNumber, getSetById } from '@opcgdb/api/queries';
-import type { OPCGDB, OPLang } from '@opcgdb/types';
+import type { ApiOrder, ApiSort, OPCGDB, OPLang } from '@opcgdb/types';
 
 export const useDb = () => {
   const db: OPCGDB = inject('opcgdb')!;
@@ -14,16 +14,24 @@ export const useDb = () => {
     return getCardById(id, cards[lang]);
   };
 
-  const _getCardsByNumber = (number: string, lang: OPLang, page: number) => {
-    return getCardsByNumber(number, cards[lang], 60, page);
+  const _getCardsByNumber = (
+    number: string,
+    lang: OPLang,
+    page: number,
+    sort: ApiSort = 'name',
+    order: ApiOrder = 'asc'
+  ) => {
+    return getCardsByNumber(number, cards[lang], 60, page, sort, order);
   };
 
   const _getCardsByFilter = (
     filters: Record<string, string | boolean>,
     lang: OPLang,
-    page: number
+    page: number,
+    sort: ApiSort = 'name',
+    order: ApiOrder = 'asc'
   ) => {
-    return getCardsByFilter(filters, cards[lang], 60, page);
+    return getCardsByFilter(filters, cards[lang], 60, page, sort, order);
   };
 
   return {

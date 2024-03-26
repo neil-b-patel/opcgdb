@@ -87,16 +87,3 @@ export type FeValidatedQueryMap = z.infer<typeof FeValidatedQueryMapSchema>;
 
 export const FeSearchResultsViewSchema = z.enum(['images', 'list', 'text-only']);
 export type FeSearchResultsView = z.infer<typeof FeSearchResultsViewSchema>;
-
-export const FeSearchResultsSortSchema = z.enum([
-  'name',
-  'set',
-  'category',
-  'rarity',
-  'cost',
-  'power',
-]);
-export type FeSearchResultsSort = z.infer<typeof FeSearchResultsSortSchema>;
-
-export const FeSearchResultsOrderSchema = z.enum(['asc', 'desc']);
-export type FeSearchResultsOrder = z.infer<typeof FeSearchResultsOrderSchema>;
