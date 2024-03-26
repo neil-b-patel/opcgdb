@@ -1,16 +1,12 @@
 <script lang="ts" setup>
-  import { useRoute } from '#imports';
+  import { useRoute, useRouter } from '#imports';
   import { onMounted, ref, watch } from 'vue';
 
-  import {
-    FeSearchResultsOrderSchema,
-    FeSearchResultsSortSchema,
-    FeSearchResultsViewSchema,
-  } from '@opcgdb/types';
+  import { ApiOrderSchema, ApiSortSchema, FeSearchResultsViewSchema } from '@opcgdb/types';
 
+  import ActionBar from '~/components/search/ActionBar.vue';
   import CardGrid from '~/components/search/CardGrid.vue';
-  import Paginator from '~/components/search/Paginator.vue';
-  import SortBar from '~/components/search/SortBar.vue';
+  import ResultsDescription from '~/components/search/ResultsDescription.vue';
   import { useDb } from '~/composables/useDb';
   import { useSearchResults } from '~/composables/useSearchResults';
   import { getFilterMap } from '~/utils/getFilterMap';
@@ -28,42 +24,21 @@
     setSort,
     currPage,
     setCurrPage,
-    queryMap,
-    setQueryMap,
+    filterMap,
+    setFilterMap,
     resetSearch,
     setTotalCards,
     setTotalPages,
   } = useSearchResults();
 
   const route = useRoute();
+  const router = useRouter();
   const loading = ref(true);
 
-  const sortCards = () => {
-    setCards(
-      cards.value.slice().sort((a, b) => {
-        let result = 0;
-        if (sort.value === 'name') {
-          result = a.name.localeCompare(b.name);
-        } else if (sort.value === 'set') {
-          result = a.set.localeCompare(b.set);
-        } else if (sort.value === 'category') {
-          result = a.category.localeCompare(b.category);
-        } else if (sort.value === 'rarity') {
-          result = a.rarity.localeCompare(b.rarity);
-        } else if (sort.value === 'cost') {
-          result = parseInt(a.cost ? a.cost : '', 10) - parseInt(b.cost ? b.cost : '', 10);
-        } else if (sort.value === 'power') {
-          result = parseInt(a.power ? a.power : '', 10) - parseInt(b.power ? b.power : '', 10);
-        }
-        return order.value === 'desc' ? -result : result;
-      })
-    );
-  };
-
-  const updateResults = () => {
-    const v = FeSearchResultsViewSchema.safeParse(route.query.view);
-    const s = FeSearchResultsSortSchema.safeParse(route.query.sort);
-    const o = FeSearchResultsOrderSchema.safeParse(route.query.order);
+  const setOrderViewSortValues = () => {
+    const v = FeSearchResultsViewSchema.safeParse(router.currentRoute.value.query.view);
+    const s = ApiSortSchema.safeParse(router.currentRoute.value.query.sort);
+    const o = ApiOrderSchema.safeParse(router.currentRoute.value.query.order);
 
     if (v.success) {
       setView(v.data);
@@ -77,25 +52,25 @@
       setOrder(o.data);
     }
 
-    sortCards();
-    loading.value = false;
+    setCards(cards.value);
   };
 
   const searchCards = (query: string) => {
     loading.value = true;
-    setQueryMap(parseSearchQuery(query));
-    const filterMap = getFilterMap(queryMap.value);
-    const res = getCardsByFilter(filterMap, 'en', currPage.value);
+    setOrderViewSortValues();
+    const queryMap = parseSearchQuery(query);
+    setFilterMap(getFilterMap(queryMap));
+    const res = getCardsByFilter(filterMap.value, 'en', currPage.value, sort.value, order.value);
     setTotalCards(res.data?.totalCards || 0);
     setTotalPages(res.data?.totalPages || 0);
+    console.log(res.data?.cards || []);
     setCards(res.data?.cards || []);
-    updateResults();
+    loading.value = false;
   };
 
   const updateCurrPage = () => {
-    if (route.query.p) {
-      console.log('updating current page');
-      setCurrPage(parseInt(route.query.p as string, 10));
+    if (router.currentRoute.value.query.p) {
+      setCurrPage(parseInt(router.currentRoute.value.query.p as string, 10));
     } else {
       setCurrPage(1);
     }
@@ -104,7 +79,7 @@
   const init = () => {
     resetSearch();
     updateCurrPage();
-    searchCards(route.query.q as string);
+    searchCards(router.currentRoute.value.query.q as string);
   };
 
   onMounted(() => {
@@ -121,10 +96,10 @@
 
 <template>
   <div class="search-results" v-if="!loading">
-    <SortBar />
-    <Paginator v-if="cards.length" section="top" />
+    <ActionBar section="top" />
+    <ResultsDescription v-if="cards.length" section="top" />
     <CardGrid v-if="cards.length && view === 'images'" :cards="cards" />
     <div v-else>No cards found for your search</div>
-    <Paginator v-if="cards.length" section="bottom" />
+    <ActionBar section="bottom" />
   </div>
 </template>

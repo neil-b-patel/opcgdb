@@ -1,6 +1,6 @@
 <script lang="ts" setup>
   import { useRoute, useRouter } from '#imports';
-  import { ref, watch } from 'vue';
+  import { onMounted, ref, watch } from 'vue';
 
   const props = withDefaults(defineProps<{ type: 'hp' | 'nav' }>(), {
     type: 'nav',
@@ -23,10 +23,18 @@
     }
   };
 
+  onMounted(() => {
+    if (router.currentRoute.value.query.q) {
+      search.value = route.query.q as string;
+    }
+  });
+
   watch(
     () => route.path,
     (path: string) => {
-      if (path !== '/search') search.value = '';
+      if (path !== '/search') {
+        search.value = '';
+      }
     }
   );
 </script>
