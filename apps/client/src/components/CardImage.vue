@@ -60,7 +60,7 @@
         rgba(255, 255, 255, 0.5) 60%,
         rgba(255, 255, 255, 0) 100%
       );
-      animation: shimmer 4s infinite;
+      animation: shimmer 4s 10s;
       content: '';
       pointer-events: none;
     }

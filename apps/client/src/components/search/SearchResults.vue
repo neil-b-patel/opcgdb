@@ -9,7 +9,7 @@
   } from '@opcgdb/types';
 
   import CardGrid from '~/components/search/CardGrid.vue';
-  import ResultsDescription from '~/components/search/ResultsDescription.vue';
+  import Paginator from '~/components/search/Paginator.vue';
   import SortBar from '~/components/search/SortBar.vue';
   import { useDb } from '~/composables/useDb';
   import { useSearchResults } from '~/composables/useSearchResults';
@@ -94,6 +94,7 @@
 
   const updateCurrPage = () => {
     if (route.query.p) {
+      console.log('updating current page');
       setCurrPage(parseInt(route.query.p as string, 10));
     } else {
       setCurrPage(1);
@@ -121,8 +122,9 @@
 <template>
   <div class="search-results" v-if="!loading">
     <SortBar />
-    <ResultsDescription v-if="cards.length" />
+    <Paginator v-if="cards.length" section="top" />
     <CardGrid v-if="cards.length && view === 'images'" :cards="cards" />
     <div v-else>No cards found for your search</div>
+    <Paginator v-if="cards.length" section="bottom" />
   </div>
 </template>

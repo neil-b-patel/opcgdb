@@ -40,15 +40,29 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
+  align-items: center;
   width: fit-content;
   cursor: pointer;
   height: 1.75rem;
   border: 1px solid var(--main-blue);
   border-radius: 3px;
   transition: background 0.3s var(--ease-3);
+  text-decoration: none;
+  line-height: 1.5;
+
+  button&,
+  a& {
+    padding: 0 var(--spacing-xs);
+  }
 
   &:hover {
     background: var(--white);
+  }
+
+  &[disabled='true'] {
+    pointer-events: none;
+    color: var(--gray);
+    border-color: var(--gray);
   }
 }
 

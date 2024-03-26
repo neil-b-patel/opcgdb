@@ -11,6 +11,7 @@
   --gold: #b8961b;
   --white: #f8fbf6;
   --light-gray: #f3f5f8;
+  --gray: var(--gray-5);
   --black: #16161d;
   --main-gradient: linear-gradient(
     180deg,
