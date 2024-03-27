@@ -5,9 +5,9 @@
 <template>
   <header class="main-gradient-bg">
     <div class="inner-wrapper navbar">
-      <section class="search">
+      <div class="search">
         <SearchForm type="nav" />
-      </section>
+      </div>
       <nav>
         <span class="divider" />
         <ul>
@@ -25,7 +25,7 @@
           </li>
         </ul>
         <span class="divider" />
-        <ul>
+        <ul class="icon-nav">
           <li>
             <NuxtLink to="/" title="Your decks">
               <Icon name="fluent:box-24-regular" />
@@ -45,9 +45,11 @@
 </template>
 
 <style scoped>
+  @import '~/styles/media';
+
   header {
     width: 100%;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-xl);
 
     .inner-wrapper {
       display: flex;
@@ -77,6 +79,19 @@
         li {
           margin: 0 var(--spacing-xs);
         }
+
+        &.icon-nav {
+          margin: 0;
+
+          li {
+            margin-right: 0;
+            margin-left: var(--spacing-sm);
+          }
+
+          svg {
+            margin: 0;
+          }
+        }
       }
 
       a {
@@ -103,6 +118,10 @@
       height: 20px;
       width: 1px;
       border-right: 1px solid var(--nav-link);
+
+      @media (--mobile) {
+        display: none;
+      }
     }
   }
 </style>

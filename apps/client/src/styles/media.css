@@ -1,2 +1,4 @@
 @custom-media --desktop (min-width: 769px);
 @custom-media --mobile (max-width: 768px);
+@custom-media --medium-mobile (min-width: 480px) and (max-width: 768px);
+@custom-media --mobile-only (max-width: 479px);

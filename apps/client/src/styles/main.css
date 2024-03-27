@@ -21,7 +21,7 @@ body {
   min-height: 70vh;
 
   section {
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-xl);
   }
 }
 

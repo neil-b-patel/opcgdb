@@ -15,11 +15,21 @@
 </template>
 
 <style scoped>
+  @import '~/styles/media';
   .card-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-md);
     margin: var(--spacing-lg) auto;
     width: 100%;
+
+    @media (--mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-sm);
+    }
+
+    @media (--medium-mobile) {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 </style>

@@ -16,7 +16,7 @@ export type OPSet = z.infer<typeof OPSetSchema>;
 export const OPSetListSchema = z.array(OPSetSchema);
 export type OPSetList = z.infer<typeof OPSetListSchema>;
 
-export const OPCardRaritySchema = z.enum(['C', 'UC', 'R', 'SR', 'SP', 'L']);
+export const OPCardRaritySchema = z.enum(['L', 'C', 'UC', 'R', 'SR', 'SEC', 'SP', 'TR']);
 export type OPCardRarity = z.infer<typeof OPCardRaritySchema>;
 
 export const OPCardColorSchema = z.enum(['Red', 'Blue', 'Yellow', 'Green', 'Black', 'Purple']);

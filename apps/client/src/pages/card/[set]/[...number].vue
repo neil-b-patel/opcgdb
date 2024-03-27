@@ -2,6 +2,7 @@
   import { useRouter } from '#imports';
   import { computed, onMounted, ref } from 'vue';
 
+  import CardDetails from '~/components/card/CardDetails.vue';
   import { useDb } from '~/composables/useDb';
 
   const { getCardById } = useDb();
@@ -29,6 +30,6 @@
 
 <template>
   <div>
-    <h1>Card {{ card }}</h1>
+    <CardDetails :card="card" />
   </div>
 </template>

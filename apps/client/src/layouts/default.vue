@@ -4,9 +4,8 @@
 </script>
 
 <template>
-  <header>
-    <Nav />
-  </header>
+  <Nav />
+
   <main id="main">
     <slot />
   </main>

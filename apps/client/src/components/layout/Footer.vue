@@ -71,7 +71,7 @@
 
 <style scoped>
   footer {
-    padding: var(--spacing-lg) 2.5% var(--spacing-xl) 2.5%;
+    padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl) var(--spacing-xl);
     background: var(--footer-bg);
     color: var(--footer-color);
 
