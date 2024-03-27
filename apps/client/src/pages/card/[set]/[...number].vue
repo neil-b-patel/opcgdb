@@ -15,8 +15,8 @@
         ? routeParams.value.set
         : routeParams.value.set.join('');
     const pathNumber: string = routeParams.value.number[0];
-    const cardNumber = `${cardSet.toUpperCase()}-${pathNumber.toUpperCase()}`;
-    card.value = getCardById(cardNumber, 'en').data;
+    const cardId = `${cardSet.toUpperCase()}-${pathNumber.toUpperCase()}`;
+    card.value = getCardById(cardId, 'en').data;
     if (!card) {
       throw createError({ statusCode: 404, statusMessage: 'Card not found' });
     }

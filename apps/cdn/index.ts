@@ -3,7 +3,6 @@ import fse from 'fs-extra/esm';
 import path from 'path';
 
 import { cards, sets } from '@opcgdb/data';
-import type { OPLang } from '@opcgdb/types';
 
 import compressImages from './lib/compress-images.js';
 import downloadImages from './lib/download-images.js';
@@ -12,15 +11,16 @@ const cwd = process.cwd();
 const baseDir = path.join(__dirname, './assets/raw');
 const baseOutDir = path.join(__dirname, './assets/public');
 const imagesOutputDir = path.join(baseOutDir, 'cardlist');
-const cardDbDir = path.join(baseOutDir, 'db/cards');
-const setDbDir = path.join(baseOutDir, 'db/sets');
+const dbDir = path.join(baseOutDir, 'db');
+const cardDbFile = path.resolve(dbDir, `cards.json`);
+const setDbFile = path.resolve(dbDir, `sets.json`);
 const pkg = fse.readJsonSync(path.resolve(__dirname, './package.json'));
 
 const _lastUpdated = new Date().toISOString();
 
-const processAssets = async (lang: OPLang) => {
+const processAssets = async () => {
   // Download images
-  await downloadImages(lang);
+  await downloadImages();
 
   // Compress them
   await compressImages('**/*.png', {
@@ -37,41 +37,29 @@ const processAssets = async (lang: OPLang) => {
 
   const cardList = {
     ...commonOut,
-    data: cards[lang],
+    data: cards,
   };
 
   const setList = {
     ...commonOut,
-    data: sets[lang],
+    data: sets,
   };
 
   // Save Database
   console.info('⚙️Writing database files');
-  fse.ensureDirSync(cardDbDir);
-  fse.ensureDirSync(setDbDir);
+  fse.ensureDirSync(dbDir);
 
-  fs.writeFileSync(path.resolve(cardDbDir, `${lang}.json`), JSON.stringify(cardList, null, 2));
-  console.info(
-    '📦',
-    '(1/2)',
-    '[ DONE ]',
-    `cardDb → ${path.relative(cwd, path.resolve(cardDbDir, `${lang}.json`))}`
-  );
+  fs.writeFileSync(cardDbFile, JSON.stringify(cardList, null, 2));
+  console.info('📦', '(1/2)', '[ DONE ]', `cardDb → ${path.relative(cwd, cardDbFile)}`);
 
-  fs.writeFileSync(path.resolve(setDbDir, `${lang}.json`), JSON.stringify(setList, null, 2));
-  console.info(
-    '📦',
-    '(2/2)',
-    '[ DONE ]',
-    `setDb → ${path.relative(cwd, path.resolve(setDbDir, `${lang}.json`))}`
-  );
+  fs.writeFileSync(setDbFile, JSON.stringify(setList, null, 2));
+  console.info('📦', '(2/2)', '[ DONE ]', `setDb → ${path.relative(cwd, setDbFile)}`);
 
   console.info('✅ Done');
 };
 
 const run = async () => {
-  await processAssets('en');
-  await processAssets('jp');
+  await processAssets();
 };
 
 run();

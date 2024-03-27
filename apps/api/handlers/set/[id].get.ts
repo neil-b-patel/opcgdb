@@ -10,7 +10,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     const { id } = ApiSetByIdParamsSchema.parse(event.pathParameters);
     const { lang = 'en' } = ApiSetByIdQuerySchema.parse(event.queryStringParameters || {});
 
-    const qres = query(id!, sets[lang]); // Adding ! is safe as if it's underfined zod will throw an error and we won't get here
+    const qres = query(id!, sets, lang); // Adding ! is safe as if it's underfined zod will throw an error and we won't get here
     return {
       statusCode: qres.status,
       body: JSON.stringify({ ...qres }),

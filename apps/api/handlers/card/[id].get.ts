@@ -9,7 +9,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   try {
     const { id } = ApiCardByIdParamsSchema.parse(event.pathParameters);
     const { lang = 'en' } = ApiCardsByIdQuerySchema.parse(event.queryStringParameters || {});
-    const qres = query(id!, cards[lang]);
+    const qres = query(id!, cards, lang);
     return {
       statusCode: qres.status,
       body: JSON.stringify({ ...qres }),

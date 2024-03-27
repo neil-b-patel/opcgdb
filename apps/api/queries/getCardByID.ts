@@ -1,7 +1,8 @@
-import type { ApiResponse, OPCardList } from '@opcgdb/types';
+import type { ApiResponse, OPCardList, OPLang } from '@opcgdb/types';
 
-const getCardById = (id: string, cards: OPCardList): ApiResponse => {
-  const card = cards.find((card) => card.id === id);
+const getCardById = (id: string, cards: OPCardList, lang: OPLang): ApiResponse => {
+  const card = cards.find((card) => card.id === id && card.lang === lang);
+
   if (!card) {
     return {
       status: 404,

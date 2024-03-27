@@ -16,7 +16,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     if (!number) {
       throw new Error('Number is required');
     }
-    const qres = query(number, cards[lang], pageSize, pageNumber);
+    const qres = query(number, lang, cards, pageSize, pageNumber);
     return {
       statusCode: qres.status,
       body: JSON.stringify({ ...qres }),

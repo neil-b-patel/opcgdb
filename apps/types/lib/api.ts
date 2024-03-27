@@ -1,10 +1,10 @@
-import type { Request, Response } from 'express';
 import { z } from 'zod';
 
 import { OPCardListSchema, OPLangSchema } from './data.js';
 
 export const ApiQueryFilterSchema = z.object({
   // single option
+  lang: OPLangSchema.optional(),
   number: z.string().optional(),
   set: z.string().optional(),
   rarity: z.enum(['C', 'UC', 'R', 'SR', 'SP', 'L']).optional(),
@@ -18,11 +18,11 @@ export const ApiQueryFilterSchema = z.object({
     .regex(/^(?:(?!.*\b(\w+)\b.*\b\1\b)(?:Red|Yellow|Purple|Blue|Green|Black)(?:,(?!$))?)+$/)
     .optional(),
   // with operand
-  life: z.string().optional(),
-  power: z.string().optional(),
-  cost: z.string().optional(),
+  life: z.number().optional(),
+  power: z.number().optional(),
+  cost: z.number().optional(),
+  counter: z.number().optional(),
   // booleans
-  counter: z.boolean().optional(),
   trigger: z.boolean().optional(),
 });
 export type ApiQueryFilter = z.infer<typeof ApiQueryFilterSchema>;
@@ -96,19 +96,13 @@ export const ApiSearchCardQuerySchema = z
   .object({
     ...ApiQueryFilterSchema.shape,
     trigger: z.enum(['0', '1']),
-    counter: z.enum(['0', '1']),
+    counter: z.number(),
     lang: OPLangSchema,
     pageSize: z.number(),
     pageNumber: z.number(),
   })
   .partial();
 export type ApiSearchCardQuery = z.infer<typeof ApiSearchCardQuerySchema>;
-
-// Express types
-export type RouteMap = {
-  path: string;
-  handler: (req: Request, res: Response) => void;
-}[];
 
 export const ApiSortSchema = z.enum(['name', 'set', 'category', 'rarity', 'cost', 'power']);
 export type ApiSort = z.infer<typeof ApiSortSchema>;

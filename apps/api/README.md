@@ -1,13 +1,6 @@
 # @opcgdb/api
 
-This is the main API to be consumed in other projects.
-
-The API is built for 2 different cases:
-
-- Deployment as a NodeServer
-- Deployment as Lambda Functions to AWS
-
-The Node Server approach will be kept in this repo, but will not be further explored. However, it will serve as a basis for anyone wanting to self deploy this API anywhere outside of AWS Lambda. Be careful with this approach, as the existing code for the Node Server API does not include API Token or Rate Limitting protection.
+This is the main API to be consumed in other projects. It's built in the form of AWS Lambda functions.
 
 ## Getting started
 
@@ -50,8 +43,3 @@ When prompted, enter the name of the stage to remove (if it's the environment fr
 ## Production deployment
 
 For instructions on production deployment, refer to the [main README file](../../README.md#deployment)
-
-## TODO
-
-- [ ] Add node server dev (watch) command
-- [ ] Add API Token support (File based, S3? Path based? URL bases?)

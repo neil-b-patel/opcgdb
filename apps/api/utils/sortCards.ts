@@ -12,9 +12,21 @@ const sortCards = (cards: OPCardList, sort: ApiSort, order: ApiOrder): OPCardLis
     } else if (sort === 'rarity') {
       result = a.rarity.localeCompare(b.rarity);
     } else if (sort === 'cost') {
-      result = parseInt(a.cost ? a.cost : '', 10) - parseInt(b.cost ? b.cost : '', 10);
+      if (a.cost && b.cost) {
+        result = a.cost - b.cost;
+      } else if (a.cost) {
+        result = -1;
+      } else if (b.cost) {
+        result = 1;
+      }
     } else if (sort === 'power') {
-      result = parseInt(a.power ? a.power : '', 10) - parseInt(b.power ? b.power : '', 10);
+      if (a.power && b.power) {
+        result = a.power - b.power;
+      } else if (a.power) {
+        result = -1;
+      } else if (b.power) {
+        result = 1;
+      }
     }
     return order === 'desc' ? -result : result;
   });

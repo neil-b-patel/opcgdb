@@ -7,11 +7,11 @@ export const useDb = () => {
   const { cards, sets } = db;
 
   const _getSetById = (id: string, lang: OPLang) => {
-    return getSetById(id, sets[lang]);
+    return getSetById(id, sets, lang);
   };
 
   const _getCardById = (id: string, lang: OPLang) => {
-    return getCardById(id, cards[lang]);
+    return getCardById(id, cards, lang);
   };
 
   const _getCardsByNumber = (
@@ -21,17 +21,16 @@ export const useDb = () => {
     sort: ApiSort = 'name',
     order: ApiOrder = 'asc'
   ) => {
-    return getCardsByNumber(number, cards[lang], 60, page, sort, order);
+    return getCardsByNumber(number, lang, cards, 60, page, sort, order);
   };
 
   const _getCardsByFilter = (
     filters: Record<string, string | boolean>,
-    lang: OPLang,
     page: number,
     sort: ApiSort = 'name',
     order: ApiOrder = 'asc'
   ) => {
-    return getCardsByFilter(filters, cards[lang], 60, page, sort, order);
+    return getCardsByFilter(filters, cards, 60, page, sort, order);
   };
 
   return {

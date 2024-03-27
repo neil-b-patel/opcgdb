@@ -13,7 +13,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       );
     }
     const {
-      lang = 'en',
+      lang,
       pageSize = 20,
       pageNumber = 1,
       number,
@@ -32,6 +32,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     } = ApiSearchCardQuerySchema.parse(event.queryStringParameters);
 
     const filters = {
+      lang,
       number,
       set,
       rarity,
@@ -43,10 +44,10 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       cost,
       type,
       name,
-      counter: counter === '1',
+      counter,
       trigger: trigger === '1',
     };
-    const qres = query(filters, cards[lang], pageSize, pageNumber);
+    const qres = query(filters, cards, pageSize, pageNumber);
     return {
       statusCode: qres.status,
       body: JSON.stringify({ ...qres }),

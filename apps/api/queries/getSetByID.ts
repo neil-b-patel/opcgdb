@@ -1,7 +1,7 @@
-import type { ApiResponse, OPSet, OPSetList } from '@opcgdb/types';
+import type { ApiResponse, OPLang, OPSet, OPSetList } from '@opcgdb/types';
 
-const getSetById = (id: string, sets: OPSetList): ApiResponse => {
-  const set = sets.find((set: OPSet) => set.id === id);
+const getSetById = (id: string, sets: OPSetList, lang: OPLang): ApiResponse => {
+  const set = sets.find((set: OPSet) => set.id === id && set.lang === lang);
   if (!set) {
     return {
       status: 404,

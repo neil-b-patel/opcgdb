@@ -9,14 +9,12 @@ export const OPSetSchema = z.object({
   id: z.string(),
   name: z.string(),
   siteId: z.array(z.string()),
+  lang: OPLangSchema,
 });
 export type OPSet = z.infer<typeof OPSetSchema>;
 
 export const OPSetListSchema = z.array(OPSetSchema);
 export type OPSetList = z.infer<typeof OPSetListSchema>;
-
-export const OPSetMapSchema = ZodRecordWithEnum(OPLangSchema, OPSetListSchema);
-export type OPSetMap = z.infer<typeof OPSetMapSchema>;
 
 export const OPCardRaritySchema = z.enum(['C', 'UC', 'R', 'SR', 'SP', 'L']);
 export type OPCardRarity = z.infer<typeof OPCardRaritySchema>;
@@ -29,28 +27,28 @@ export type OPCardCategory = z.infer<typeof OPCardCategorySchema>;
 
 export const OPCardSchema = z.object({
   id: z.string(),
+  lang: z.string(),
   number: z.string(),
   set: z.string(),
   rarity: z.string(),
   color: z.array(z.string()),
   category: z.string(),
   type: z.array(z.string()),
+  searchType: z.array(z.string()),
   name: z.string(),
-  cost: z.string().optional(),
-  life: z.string().optional(),
+  searchName: z.string(),
+  cost: z.number().optional(),
+  life: z.number().optional(),
   attribute: z.string().optional(),
   effect: z.string().optional(),
-  power: z.string().optional(),
-  counter: z.string().optional(),
+  power: z.number().optional(),
+  counter: z.number().optional(),
   trigger: z.string().optional(),
 });
 export type OPCard = z.infer<typeof OPCardSchema>;
 
 export const OPCardListSchema = z.array(OPCardSchema);
 export type OPCardList = z.infer<typeof OPCardListSchema>;
-
-export const OPCardMapSchema = ZodRecordWithEnum(OPLangSchema, OPCardListSchema);
-export type OPCardMap = z.infer<typeof OPCardMapSchema>;
 
 export const OPSeriesCorrectionsSchema = ZodRecordWithEnum(
   OPLangSchema,
@@ -64,7 +62,7 @@ export const OPSeriesCorrectionsSchema = ZodRecordWithEnum(
 export type OPSeriesCorrections = z.infer<typeof OPSeriesCorrectionsSchema>;
 
 export const OPCGDBSchema = z.object({
-  cards: OPCardMapSchema,
-  sets: OPSetMapSchema,
+  cards: OPCardListSchema,
+  sets: OPSetListSchema,
 });
 export type OPCGDB = z.infer<typeof OPCGDBSchema>;

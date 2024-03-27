@@ -60,7 +60,7 @@
     setOrderViewSortValues();
     const queryMap = parseSearchQuery(query);
     setFilterMap(getFilterMap(queryMap));
-    const res = getCardsByFilter(filterMap.value, 'en', currPage.value, sort.value, order.value);
+    const res = getCardsByFilter(filterMap.value, currPage.value, sort.value, order.value);
     setTotalCards(res.data?.totalCards || 0);
     setTotalPages(res.data?.totalPages || 0);
     setCards(res.data?.cards || []);

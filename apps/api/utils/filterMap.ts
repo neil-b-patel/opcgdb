@@ -4,6 +4,9 @@ const filterMap = {
   number: (cards: OPCardList, t: ApiQueryFilter['number']): OPCardList => {
     return cards.filter(({ number }) => number === t);
   },
+  lang: (cards: OPCardList, t: ApiQueryFilter['lang']): OPCardList => {
+    return cards.filter(({ lang }) => lang === t);
+  },
   set: (cards: OPCardList, t: ApiQueryFilter['set']): OPCardList => {
     return cards.filter(({ set }) => set === t);
   },
@@ -53,7 +56,7 @@ const filterMap = {
     return filteredCards;
   },
   counter: (cards: OPCardList, t: ApiQueryFilter['counter']): OPCardList => {
-    return cards.filter(({ counter }) => t === !!counter);
+    return cards.filter(({ counter }) => t === counter);
   },
   trigger: (cards: OPCardList, t: ApiQueryFilter['trigger']): OPCardList => {
     return cards.filter(({ trigger }) => t === !!trigger);

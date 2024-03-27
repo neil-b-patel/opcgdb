@@ -33,7 +33,7 @@ const getCardsByFilters = (
           const currFilter = filters[filterType];
           const filterFn = filterMap[filterType] as (
             c: OPCardList,
-            t: string | boolean | undefined
+            t: string | boolean | number | undefined
           ) => OPCardList;
           return filterFn(acc, currFilter);
         }, cards),

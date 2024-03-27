@@ -5,7 +5,7 @@ import { useDb } from './useDb';
 export const useRandomCards = (n = 1, lang: OPLang = 'en') => {
   const { cards } = useDb();
   // Create a set to store unique items
-  const shuffledArray = cards[lang].sort(() => Math.random() - 0.5);
+  const shuffledArray = cards.filter((c) => lang == c.lang).sort(() => Math.random() - 0.5);
   const uniqueItems = new Set(shuffledArray);
 
   // Convert the set back to an array

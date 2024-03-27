@@ -11,7 +11,7 @@ const crawl = async (lang: OPLang, force: boolean): Promise<void> => {
   const url =
     lang === 'en'
       ? `https://en.onepiece-cardgame.com/cardlist/`
-      : `https://asia-en.onepiece-cardgame.com/cardlist/`;
+      : `https://onepiece-cardgame.com/cardlist/`;
 
   console.info(`⚙️`, 'Fetching series list...', `(${lang})`);
   const $ = await getPageDOM(url);
@@ -27,7 +27,7 @@ const crawl = async (lang: OPLang, force: boolean): Promise<void> => {
     if (!fs.existsSync(outFile) && !force) {
       const seriesUrl = `${url}?series=${series}`;
       const $ = await getPageDOM(seriesUrl);
-      const seriesCardList = getSeriesData($);
+      const seriesCardList = getSeriesData($, lang);
       writeSeriesFile(series, lang, seriesCardList, outFile);
       console.info(
         `📦`,
