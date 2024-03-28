@@ -1,8 +1,10 @@
+import { marshall } from '@aws-sdk/util-dynamodb';
 import fs from 'fs';
 import fse from 'fs-extra/esm';
 import path from 'path';
 
 import { cards, sets } from '@opcgdb/data';
+import type { OPCard, OPSet } from '@opcgdb/types';
 
 import compressImages from './lib/compress-images.js';
 import downloadImages from './lib/download-images.js';
@@ -46,7 +48,7 @@ const processAssets = async () => {
   };
 
   // Save Database
-  console.info('⚙️Writing database files');
+  console.info('⚙️ Writing database files');
   fse.ensureDirSync(dbDir);
 
   fs.writeFileSync(cardDbFile, JSON.stringify(cardList, null, 2));
@@ -54,6 +56,25 @@ const processAssets = async () => {
 
   fs.writeFileSync(setDbFile, JSON.stringify(setList, null, 2));
   console.info('📦', '(2/2)', '[ DONE ]', `setDb → ${path.relative(cwd, setDbFile)}`);
+
+  // Save DynamoDb JSON compatible files for cards and sets
+  console.info('⚙️ Writing DynamoDB compatible files');
+  const cardDbDynamo = cards.map((card: OPCard) =>
+    marshall({
+      ...card,
+      color: new Set(card.color),
+      type: new Set(card.type),
+      searchType: new Set(card.searchType),
+    })
+  );
+  fs.writeFileSync(path.resolve(dbDir, 'dynamo-cards.json'), JSON.stringify(cardDbDynamo, null, 2));
+  const setDbDynamo = sets.map((set: OPSet) =>
+    marshall({
+      ...set,
+      siteId: new Set(set.siteId),
+    })
+  );
+  fs.writeFileSync(path.resolve(dbDir, 'dynamo-sets.json'), JSON.stringify(setDbDynamo, null, 2));
 
   console.info('✅ Done');
 };
