@@ -10,6 +10,13 @@
         "cwd": "apps/cdn",
         "commands": ["vite-node index.ts"]
       }
+    },
+    "watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/cdn/assets/public",
+        "commands": ["http-server -p 8081"]
+      }
     }
   }
 }
