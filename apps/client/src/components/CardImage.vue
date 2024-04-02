@@ -4,12 +4,13 @@
 
   import type { OPCard } from '@opcgdb/types';
 
+  import { getCardUrl } from '~/utils/getCardUrl';
+
   const config = useRuntimeConfig();
 
   const props = withDefaults(
     defineProps<{
       card: OPCard;
-      lang?: string;
       isLink?: boolean;
       width?: number;
       class?: string;
@@ -19,10 +20,7 @@
 
   const cardClasses = ['card', `card--${props.card.id}`];
   const Wrapper = computed(() => (props.isLink ? defineNuxtLink({}) : 'div'));
-  const cardUrl = computed(
-    () =>
-      `/card/${props.card.number.split('-').join('/')}/${props.card.name.toLowerCase().replace(/ /g, '-')}`
-  );
+  const cardUrl = computed(() => getCardUrl(props.card));
 
   if (props.class) {
     cardClasses.push(props.class);
@@ -32,7 +30,7 @@
 <template>
   <Wrapper v-bind="props.isLink ? { to: cardUrl } : null" :class="cardClasses">
     <img
-      :src="`${config.public.cdn_url}/cardlist/${props.lang}/${props.card.id}.webp`"
+      :src="`${config.public.cdn_url}/cardlist/${props.card.lang}/${props.card.id}.webp`"
       :alt="props.card.name"
       :width="props.width"
     />
