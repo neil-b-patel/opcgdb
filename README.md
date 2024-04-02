@@ -128,6 +128,7 @@ You can support directly through my Kofi page [![ko-fi](https://ko-fi.com/img/gi
 [ ] Client - Developer Docs
 [ ] Client - All things mobile
 [ ] Data - scrape Promo card set name
+[ ] Data + Client + Api - Pull card info from Dynamo instead of data json (update filter/sort mechanism)
 [ ] Data - ban list support
 [ ] Client - Support/Issue page
 [ ] Data - update list.ts programatically
