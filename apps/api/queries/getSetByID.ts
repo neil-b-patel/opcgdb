@@ -1,11 +1,11 @@
 import type { ApiResponse, OPLang, OPSet, OPSetList } from '@opcgdb/types';
 
-const getSetById = (id: string, sets: OPSetList, lang: OPLang): ApiResponse => {
+const getSetById = (id: string, sets: OPSetList, lang: OPLang): ApiResponse & { data?: OPSet } => {
   const set = sets.find((set: OPSet) => set.id === id && set.lang === lang);
   if (!set) {
     return {
       status: 404,
-      data: { error: 'No said found for the given id' },
+      error: 'No said found for the given id',
     };
   }
   return {

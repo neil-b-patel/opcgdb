@@ -19,23 +19,29 @@ export const getFilterMap = (queryMap: FeValidatedQueryMap) => {
             .map((color) => colorMap[color])
             .join(',');
         }
-
         break;
       case 'category':
         acc.category = categoryMap[value];
         break;
-      case 'counter':
-        acc.counter = value === 'true' || value === '1';
-        break;
       case 'trigger':
         acc.trigger = value === 'true' || value === '1';
         break;
+      case 'counter':
+      case 'cost':
+      case 'life':
+      case 'power':
+        if (value !== undefined) {
+          acc[filterKey] = parseInt(value, 10);
+        }
+        break;
+      case 'lang':
+        if (value === 'en' || value === 'jp') {
+          acc.lang = value;
+        }
+        break;
       case 'number':
       case 'set':
-      case 'life':
       case 'attribute':
-      case 'power':
-      case 'cost':
       case 'type':
       case 'name':
         acc[filterKey] = value;

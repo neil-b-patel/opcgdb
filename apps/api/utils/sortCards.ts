@@ -5,6 +5,8 @@ const sortCards = (cards: OPCardList, sort: ApiSort, order: ApiOrder): OPCardLis
     let result = 0;
     if (sort === 'name') {
       result = a.name.localeCompare(b.name);
+    } else if (sort === 'number') {
+      result = a.number.localeCompare(b.number);
     } else if (sort === 'set') {
       result = a.set.localeCompare(b.set);
     } else if (sort === 'category') {

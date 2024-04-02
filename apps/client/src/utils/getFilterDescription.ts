@@ -8,6 +8,8 @@ export const getFilterDescription = (filterMap: ApiQueryFilter) => {
       switch (filterType) {
         case 'number':
           return `Number is ${currFilter}`;
+        case 'lang':
+          return `Language is ${currFilter === 'en' ? 'English' : 'Japanese'}`;
         case 'set':
           return `Set is ${currFilter}`;
         case 'rarity':

@@ -28,7 +28,7 @@ const getCardsByFilters = (
     // Apply all the filters passed to the card list
     const cardList = sortCards(
       filterKeys
-        .filter((k: keyof ApiQueryFilter) => !!filters[k]) // only check filters that have a value
+        .filter((k: keyof ApiQueryFilter) => filters[k] !== undefined) // only check filters that have a value
         .reduce((acc: OPCardList, filterType: keyof ApiQueryFilter) => {
           const currFilter = filters[filterType];
           const filterFn = filterMap[filterType] as (

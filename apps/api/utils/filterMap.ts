@@ -2,16 +2,16 @@ import type { ApiQueryFilter, OPCardList } from '@opcgdb/types';
 
 const filterMap = {
   number: (cards: OPCardList, t: ApiQueryFilter['number']): OPCardList => {
-    return cards.filter(({ number }) => number === t);
+    return cards.filter(({ number }) => number === t!.toUpperCase());
   },
   lang: (cards: OPCardList, t: ApiQueryFilter['lang']): OPCardList => {
-    return cards.filter(({ lang }) => lang === t);
+    return cards.filter(({ lang }) => lang === t!.toLocaleLowerCase());
   },
   set: (cards: OPCardList, t: ApiQueryFilter['set']): OPCardList => {
-    return cards.filter(({ set }) => set === t);
+    return cards.filter(({ set }) => set === t!.toUpperCase());
   },
   rarity: (cards: OPCardList, t: ApiQueryFilter['rarity']): OPCardList => {
-    return cards.filter(({ rarity }) => rarity === t);
+    return cards.filter(({ rarity }) => rarity === t!.toUpperCase());
   },
   color: (cards: OPCardList, t: ApiQueryFilter['color']): OPCardList => {
     const colors = t!.split(',');
@@ -39,7 +39,7 @@ const filterMap = {
     return cards.filter(({ power }) => power === t);
   },
   cost: (cards: OPCardList, t: ApiQueryFilter['cost']): OPCardList => {
-    return cards.filter(({ cost }) => cost === t);
+    return cards.filter(({ cost }) => cost && cost === t);
   },
   type: (cards: OPCardList, t: ApiQueryFilter['type']): OPCardList => {
     return cards.filter(({ type }) => type.map((a) => a.toLowerCase()).includes(t!.toLowerCase()));

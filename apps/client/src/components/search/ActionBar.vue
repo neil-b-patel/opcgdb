@@ -56,6 +56,7 @@
           <span>Sort by</span>
           <select class="cta short" v-model="sort" @change="onFilterUpdate">
             <option value="name">Name</option>
+            <option value="number">Number</option>
             <option value="set">Set</option>
             <option value="category">Category</option>
             <option value="rarity">Rarity</option>

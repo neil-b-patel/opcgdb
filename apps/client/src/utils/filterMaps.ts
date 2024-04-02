@@ -33,6 +33,8 @@ export const filterNameMap: Record<FeValidSearchFilter, FeQueryFilterKey> = {
   counter: 'counter',
   trig: 'trigger',
   trigger: 'trigger',
+  lang: 'lang',
+  language: 'lang',
 };
 
 export const colorMap: Record<string, OPCardColor> = {
