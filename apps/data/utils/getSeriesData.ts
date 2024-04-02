@@ -2,7 +2,6 @@ import { CheerioAPI } from 'cheerio';
 
 import { OPCard, OPCardColor, OPCardList, OPLang } from '@opcgdb/types';
 
-// TODO: Standardise color and attribute for japanese entries
 const jpColorMap: Record<string, OPCardColor> = {
   赤: 'Red',
   青: 'Blue',

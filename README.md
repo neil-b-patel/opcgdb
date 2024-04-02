@@ -119,3 +119,16 @@ You can support directly through my Kofi page [![ko-fi](https://ko-fi.com/img/gi
 
 > [!CAUTION]
 > This is a fan made project. All information and assets provided by the applications housed by this repository are owned by: BANDAI, BANDAI CARD GAMES, BANDAI NAMCO, Eiichiro Oda/Shueisha, Toei Animation. In case of issues, the project may be taken down
+
+## TODO
+
+[ ] Client - Card page
+[ ] Client - Advance Search Page
+[ ] Client - Syntax Page
+[ ] Client - Developer Docs
+[ ] Client - All things mobile
+[ ] Data - update list.ts programatically
+[ ] Data - ban list support
+[ ] Data - scrape Promo card set name
+[ ] CDN - Add support for --force to force asset download
+[ ] Bot - Discord Bot

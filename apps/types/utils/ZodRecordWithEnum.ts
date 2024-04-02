@@ -16,7 +16,6 @@ export function ZodRecordWithEnum<
   ValueSchema extends ZodTypeAny,
 >(enumSchema: EnumSchema, valueSchema: ValueSchema) {
   return z.object(
-    // TODO: Why is this explicit generic parameter needed / `enumSchema.options` typed as `any`?
     _zodShapeWithKeysAndValue<EnumType, ValueSchema>(enumSchema.options, valueSchema)
   );
 }

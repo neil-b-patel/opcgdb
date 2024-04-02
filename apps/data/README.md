@@ -43,10 +43,3 @@ This will build the library for production use. It will make sure to run the scr
 When new sets of cards are released, the scraper needs to be re-run to pull the latest information. This will only be possible once the content is updated on the official website.
 
 The scraper will ignore any sets if the file for them already exists. This can be ignored by passing the `force` parameter as true in `apps/data/utils/scraper.ts`
-
-## TODO
-
-- [ ] Use Zod for types + Schemas
-- [ ] Simplify type names
-- [ ] Add way to force only certain sets
-- [ ] Use set ids from the local files instead of scraping them every time

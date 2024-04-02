@@ -48,7 +48,3 @@ At the end of the compression task, the script will output logs indicating the n
 ## Production deployment
 
 For instructions on production deployment, refer to the [main README file](../../README.md#deployment)
-
-## TODO
-
-[ ] Add option to force re-download when the assets already exist
