@@ -18,6 +18,7 @@ import op03 from './569103.json';
 import op04 from './569104.json';
 import op05 from './569105.json';
 import op06 from './569106.json';
+import eb01 from './569201.json';
 import limited from './569801.json';
 import promos from './569901.json';
 
@@ -40,6 +41,7 @@ const cardList: OPCardList = [
   ...op04,
   ...op05,
   ...op06,
+  ...eb01,
   ...limited,
   ...promos,
 ];
