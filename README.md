@@ -127,8 +127,9 @@ You can support directly through my Kofi page [![ko-fi](https://ko-fi.com/img/gi
 [ ] Client - Syntax Page
 [ ] Client - Developer Docs
 [ ] Client - All things mobile
-[ ] Data - update list.ts programatically
-[ ] Data - ban list support
 [ ] Data - scrape Promo card set name
+[ ] Data - ban list support
+[ ] Client - Support/Issue page
+[ ] Data - update list.ts programatically
 [ ] CDN - Add support for --force to force asset download
 [ ] Bot - Discord Bot
