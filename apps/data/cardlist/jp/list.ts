@@ -1,4 +1,4 @@
-import type { OPCardList } from '@opcgdb/types';
+import { type OPCardList, OPCardListSchema } from '@opcgdb/types';
 
 import st01 from './550001.json';
 import st02 from './550002.json';
@@ -25,7 +25,7 @@ import family from './550701.json';
 import limited from './550801.json';
 import promos from './550901.json';
 
-const cardList: OPCardList = [
+const cardList: OPCardList = OPCardListSchema.parse([
   ...st01,
   ...st02,
   ...st03,
@@ -50,6 +50,6 @@ const cardList: OPCardList = [
   ...family,
   ...limited,
   ...promos,
-];
+]);
 
 export default cardList;

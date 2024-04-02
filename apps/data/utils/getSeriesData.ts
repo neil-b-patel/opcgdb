@@ -29,8 +29,12 @@ const getSetNameAndID = (input: string) => {
   if (input.startsWith('OP')) {
     return input.replace('-', '').trim();
   }
-  const parts = input.split('[');
-  const id = parts[1] ? parts[1].replace(/-/g, '').replace(/]/g, '').trim() : 'PROMO';
+
+  // EN brackets -> [], JP brackets -> 【】
+  const parts = input.includes('[') ? input.split('[') : input.split('【');
+  const id = parts[1]
+    ? parts[1].replace(/-/g, '').replace(/]/g, '').replace(/】/g, '').trim()
+    : 'PROMO';
   return id;
 };
 
@@ -106,7 +110,7 @@ const getSeriesData = ($series: CheerioAPI, lang: OPLang): OPCardList => {
         cost: rarity !== 'L' && cost ? parseInt(cost[0], 10) || 0 : undefined,
         life: rarity === 'L' && life ? parseInt(life![0], 10) : undefined,
         attribute,
-        power,
+        power: category === 'CHARACTER' && !power ? 0 : power,
         counter,
         effect,
         trigger,
