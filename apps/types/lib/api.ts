@@ -1,14 +1,19 @@
 import { z } from 'zod';
 
-import { OPCardListSchema, OPLangSchema } from './data.js';
+import {
+  OPCardCategorySchema,
+  OPCardListSchema,
+  OPCardRaritySchema,
+  OPLangSchema,
+} from './data.js';
 
 export const ApiQueryFilterSchema = z.object({
   // single option
   lang: OPLangSchema.optional(),
   number: z.string().optional(),
   set: z.string().optional(),
-  rarity: z.enum(['C', 'UC', 'R', 'SR', 'SP', 'L']).optional(),
-  category: z.enum(['CHARACTER', 'LEADER', 'EVENT', 'STAGE']).optional(),
+  rarity: OPCardRaritySchema.optional(),
+  category: OPCardCategorySchema.optional(),
   attribute: z.string().optional(),
   type: z.string().optional(),
   // multi option with inclusive operand
@@ -104,7 +109,15 @@ export const ApiSearchCardQuerySchema = z
   .partial();
 export type ApiSearchCardQuery = z.infer<typeof ApiSearchCardQuerySchema>;
 
-export const ApiSortSchema = z.enum(['name', 'set', 'category', 'rarity', 'cost', 'power']);
+export const ApiSortSchema = z.enum([
+  'name',
+  'number',
+  'set',
+  'category',
+  'rarity',
+  'cost',
+  'power',
+]);
 export type ApiSort = z.infer<typeof ApiSortSchema>;
 
 export const ApiOrderSchema = z.enum(['asc', 'desc']);

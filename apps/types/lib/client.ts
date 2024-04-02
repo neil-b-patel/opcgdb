@@ -39,6 +39,9 @@ export type FeCounterFilter = z.infer<typeof FeCounterFilterSchema>;
 export const FeTriggerFilterSchema = z.enum(['trig', 'trigger']);
 export type FeTriggerFilter = z.infer<typeof FeTriggerFilterSchema>;
 
+export const FeLangFilterSchema = z.enum(['lang', 'language']);
+export type FeLangFilter = z.infer<typeof FeTriggerFilterSchema>;
+
 export const FeValidSearchFilterSchema = z.union([
   FeNumberFilterSchema,
   FeSetFilterSchema,
@@ -53,6 +56,7 @@ export const FeValidSearchFilterSchema = z.union([
   FeNameFilterSchema,
   FeCounterFilterSchema,
   FeTriggerFilterSchema,
+  FeLangFilterSchema,
 ]);
 export type FeValidSearchFilter = z.infer<typeof FeValidSearchFilterSchema>;
 
@@ -76,6 +80,7 @@ export const FeQueryFilterKeySchema = z.enum([
   'name',
   'counter',
   'trigger',
+  'lang',
 ]);
 export type FeQueryFilterKey = z.infer<typeof FeQueryFilterKeySchema>;
 

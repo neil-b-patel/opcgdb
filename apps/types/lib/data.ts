@@ -27,7 +27,7 @@ export type OPCardCategory = z.infer<typeof OPCardCategorySchema>;
 
 export const OPCardSchema = z.object({
   id: z.string(),
-  lang: z.string(),
+  lang: OPLangSchema,
   number: z.string(),
   set: z.string(),
   rarity: z.string(),
