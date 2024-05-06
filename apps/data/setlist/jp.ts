@@ -21,6 +21,7 @@ export default [
   { id: 'ST11', lang: 'jp', name: 'Uta', siteId: ['550011'] },
   { id: 'ST12', lang: 'jp', name: 'Zoro and Sanji', siteId: ['550012'] },
   { id: 'ST13', lang: 'jp', name: 'The Three Brothers Bond', siteId: ['550013'] },
+  { id: 'ST14', lang: 'jp', name: '3D2Y', siteId: ['550014'] },
   { id: 'EB01', lang: 'jp', name: 'Memorial Collection', siteId: ['550201'] },
   { id: 'PROMO', lang: 'jp', name: 'Promos', siteId: ['550701', '550801', '550901'] },
 ] satisfies OPSetList;

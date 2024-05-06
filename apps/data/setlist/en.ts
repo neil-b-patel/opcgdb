@@ -20,5 +20,6 @@ export default [
   { id: 'ST10', lang: 'en', name: 'The Three Captains', siteId: ['569010'] },
   { id: 'ST11', lang: 'en', name: 'Uta', siteId: ['569011'] },
   { id: 'ST12', lang: 'en', name: 'Zoro and Sanji', siteId: ['569012'] },
+  { id: 'ST13', lang: 'en', name: 'The Three Brothers Bond', siteId: ['569013'] },
   { id: 'PROMO', lang: 'en', name: 'Promos', siteId: ['569801', '569901'] },
 ] satisfies OPSetList;

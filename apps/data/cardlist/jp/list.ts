@@ -13,6 +13,7 @@ import st10 from './550010.json';
 import st11 from './550011.json';
 import st12 from './550012.json';
 import st13 from './550013.json';
+import st14 from './550014.json';
 import op01 from './550101.json';
 import op02 from './550102.json';
 import op03 from './550103.json';
@@ -39,6 +40,7 @@ const cardList: OPCardList = OPCardListSchema.parse([
   ...st11,
   ...st12,
   ...st13,
+  ...st14,
   ...eb01,
   ...op01,
   ...op02,
