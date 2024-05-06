@@ -51,6 +51,7 @@
   /* typography */
   --font-size-caption: clamp(0.75rem, 0.75vw, 1rem);
   --font-size-body: clamp(0.75rem, 0.875rem, 1rem);
+  --font-size-bigbody: 1rem;
   --font-size-head: var(--font-size-fluid-2);
   --font-size-subhead: var(--font-size-fluid-1);
 
