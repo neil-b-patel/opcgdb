@@ -105,13 +105,12 @@ If you only want to exclude the CDN or the API from your deploymnent, you can re
 
 ## Things missing
 
-- Implement Token authentication on the API
 - Procure production domains
 - For some reason the information on different DON!! cards for the different sets is not included in the lists of the official website, so an alternative method to fetch these cards will be needed.
 
 ## Support
 
-If you'd like to support this project, you're welcome to contribute either via pull requests to improve and maintain the code. If coding isn't your thing, you can also supprot via donations to help fund the project. The funds will be used to support the continuous development of the tools as well as to keep the infrastructure running (servers, domains, CDN, etc).
+If you'd like to support this project, you're welcome to contribute through pull requests to improve and maintain the code. If coding isn't your thing, you can also supprot via donations to help fund the project. The funds will be used to support the continuous development of the tools as well as to keep the infrastructure running (servers, domains, CDN, etc).
 
 You can support directly through my Kofi page [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T841YPJ).
 
