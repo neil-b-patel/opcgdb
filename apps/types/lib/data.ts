@@ -31,7 +31,7 @@ export const OPCardSchema = z.object({
   number: z.string(),
   set: z.string(),
   rarity: z.string(),
-  color: z.array(z.string()),
+  color: z.array(z.string().nullable()),
   category: z.string(),
   type: z.array(z.string()),
   searchType: z.array(z.string()),

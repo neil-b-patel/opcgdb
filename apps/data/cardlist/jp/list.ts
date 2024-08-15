@@ -21,7 +21,9 @@ import op04 from './550104.json';
 import op05 from './550105.json';
 import op06 from './550106.json';
 import op07 from './550107.json';
+import op08 from './550108.json';
 import eb01 from './550201.json';
+import prb01 from './550301.json';
 import family from './550701.json';
 import limited from './550801.json';
 import promos from './550901.json';
@@ -42,6 +44,7 @@ const cardList: OPCardList = OPCardListSchema.parse([
   ...st13,
   ...st14,
   ...eb01,
+  ...prb01,
   ...op01,
   ...op02,
   ...op03,
@@ -49,6 +52,7 @@ const cardList: OPCardList = OPCardListSchema.parse([
   ...op05,
   ...op06,
   ...op07,
+  ...op08,
   ...family,
   ...limited,
   ...promos,

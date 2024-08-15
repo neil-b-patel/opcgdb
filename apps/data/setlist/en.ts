@@ -7,7 +7,7 @@ export default [
   { id: 'OP04', lang: 'en', name: 'Kingdoms of Intrigue', siteId: ['569104'] },
   { id: 'OP05', lang: 'en', name: 'Awakening of the New Era', siteId: ['569105'] },
   { id: 'OP06', lang: 'en', name: 'Wings of the Captain', siteId: ['569106'] },
-  { id: 'EB01', lang: 'en', name: 'Memorial Collection', siteId: ['569201'] },
+  { id: 'OP07', lang: 'en', name: '500 Years in the Future', siteId: ['569107'] },
   { id: 'ST01', lang: 'en', name: 'Straw Hat Crew', siteId: ['569001'] },
   { id: 'ST02', lang: 'en', name: 'Worst Generation', siteId: ['569002'] },
   { id: 'ST03', lang: 'en', name: 'The Seven Warlords of the Sea', siteId: ['569003'] },
@@ -21,5 +21,7 @@ export default [
   { id: 'ST11', lang: 'en', name: 'Uta', siteId: ['569011'] },
   { id: 'ST12', lang: 'en', name: 'Zoro and Sanji', siteId: ['569012'] },
   { id: 'ST13', lang: 'en', name: 'The Three Brothers Bond', siteId: ['569013'] },
+  { id: 'ST14', lang: 'en', name: '3D2Y', siteId: ['569014'] },
+  { id: 'EB01', lang: 'en', name: 'Memorial Collection', siteId: ['569201'] },
   { id: 'PROMO', lang: 'en', name: 'Promos', siteId: ['569801', '569901'] },
 ] satisfies OPSetList;
